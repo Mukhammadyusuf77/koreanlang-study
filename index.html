@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс корейского языка</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Общие стили */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f2f6f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        h1, h2, h3, p {
+            margin: 0 0 20px;
+        }
+
+        /* Стили для навигации */
+        .navbar {
+            background-color: #34495e;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .navbar h1 {
+            font-size: 24px;
+        }
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Стили для урока */
+        .lesson-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .lesson-container h2 {
+            font-size: 28px;
+            color: #2c3e50;
+        }
+        .lesson-container p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Стили для примеров */
+        .examples {
+            margin-top: 30px;
+        }
+        .examples ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .examples li {
+            background: #ecf0f1;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        /* Кнопки */
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .navbar h1 {
+                font-size: 20px;
+            }
+            .lesson-container {
+                padding: 20px;
+            }
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1 id="headerTitle"></h1>
+        <select id="languageSelect">
+          <option value="uz">Uzbek</option>
+          <option value="ru">Russian</option>
+          <option value="tr">Turkish</option>
+          <option value="ne">Nepali</option>
+          <option value="vi">Vietnamese</option>
+          <option value="si">Sinhala</option>
+          <option value="kk">Kazakh</option>
+          <option value="ar">Arabic</option>
+          <option value="th">Thai</option>
+          <option value="bn">Bengali</option>
+          <option value="ky">Kyrgyz</option>
+          <option value="ye">Yemeni</option>
+          
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="lesson-container">
+            <h2 id="lessonTitle"></h2>
+            <p id="lessonContent"></p>
+            <div class="examples">
+                <h3>Examples:</h3>
+                <ul id="lessonExamples"></ul>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="lessons.html" class="btn">Beginer</a><br>
+            <a href="payments.html" class="btn">Medium</a><br>
+            <a href="payments.html" class="btn">Professional</a><br>
+            <a href="test.html" class="btn">Test</a><br>
+            <a href="alphabet.html" class="btn">Alphabet</a>
+        </div>
+    </div>
+
+    <script src="languages.js"></script>
+    <script>
+      const lessons = {
+    "Lesson 1: Korean Alphabet": {
+        description: "In this lesson, you will learn the basics of Hangul, the Korean writing system. You will understand how to read and write the basic characters, vowels, and consonants.",
+        examples: [
+            "ㅏ (a): As in 아버지 (father).",
+            "ㅂ (b): As in 밥 (rice).",
+            "ㅎ (h): As in 하늘 (sky)."
+        ]
+    }
+};
+
+const languageData = {
+  en: {
+    headerTitle: "Welcome to the Korean Language Course",
+    headerSubtitle: "Learn Korean effortlessly!",
+    languageLabel: "Choose Language:",
+    lessonTitle: "Lesson 1: Introduction to the Alphabet",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  uz: {
+    headerTitle: "Koreys tili kursiga xush kelibsiz",
+    headerSubtitle: "Koreys tilini oson o'rganing!",
+    languageLabel: "Tilni tanlang:",
+    lessonTitle: "1-dars: Alfavit bilan tanishuv",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  ru: {
+    headerTitle: "Добро пожаловать на курс корейского языка",
+    headerSubtitle: "Учите корейский язык легко!",
+    languageLabel: "Выберите язык:",
+    lessonTitle: "Урок 1: Знакомство с алфавитом",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  ne: {
+    headerTitle: "कोरियन भाषा पाठ्यक्रममा स्वागत छ",
+    headerSubtitle: "कोरियन भाषा सजिलै सिक्नुहोस्!",
+    languageLabel: "भाषा चयन गर्नुहोस्:",
+    lessonTitle: "पाठ १: वर्णमालाको परिचय",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  vi: {
+    headerTitle: "Chào mừng đến với khóa học tiếng Hàn",
+    headerSubtitle: "Học tiếng Hàn một cách dễ dàng!",
+    languageLabel: "Chọn ngôn ngữ:",
+    lessonTitle: "Bài 1: Giới thiệu bảng chữ cái",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  si: {
+    headerTitle: "කොරියානු භාෂා පාඨමාලාවට පිළිගනිමු",
+    headerSubtitle: "කොරියානු භාෂාව පහසුවෙන් ඉගෙන ගන්න!",
+    languageLabel: "භාෂාව තෝරන්න:",
+    lessonTitle: "පන්ති 1: අකුරු මාලාවට හැඳින්වීම",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  kk: {
+    headerTitle: "Корей тілі курсына қош келдіңіз",
+    headerSubtitle: "Корей тілін оңай үйреніңіз!",
+    languageLabel: "Тілді таңдаңыз:",
+    lessonTitle: "1-сабақ: Әліпбимен танысу",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  ar: {
+    headerTitle: "مرحبًا بك في دورة اللغة الكورية",
+    headerSubtitle: "تعلم اللغة الكورية بسهولة!",
+    languageLabel: "اختر اللغة:",
+    lessonTitle: "الدرس 1: التعرف على الأبجدية",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  th: {
+    headerTitle: "ยินดีต้อนรับสู่คอร์สภาษาเกาหลี",
+    headerSubtitle: "เรียนภาษาเกาหลีได้อย่างง่ายดาย!",
+    languageLabel: "เลือกภาษา:",
+    lessonTitle: "บทที่ 1: แนะนำอักษรเกาหลี",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  bn: {
+    headerTitle: "কোরিয়ান ভাষা কোর্সে স্বাগতম",
+    headerSubtitle: "সহজেই কোরিয়ান ভাষা শিখুন!",
+    languageLabel: "ভাষা নির্বাচন করুন:",
+    lessonTitle: "পাঠ ১: বর্ণমালার পরিচিতি",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  ky: {
+    headerTitle: "Корей тили курсуна кош келиңиз",
+    headerSubtitle: "Корей тилин оңой үйрөнүңүз!",
+    languageLabel: "Тилди тандаңыз:",
+    lessonTitle: "1-сабак: Алфавит менен таанышуу",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+  tr: {
+    headerTitle: "Korece Dil Kursuna Hoş Geldiniz",
+    headerSubtitle: "Koreceyi kolayca öğrenin!",
+    languageLabel: "Dil Seçin:",
+    lessonTitle: "1. Ders: Alfabe Tanıtımı",
+    lessonContent: lessons["Lesson 1: Korean Alphabet"].description,
+    examples: lessons["Lesson 1: Korean Alphabet"].examples,
+  },
+};
+
+const updateContent = (lang) => {
+    const data = languageData[lang];
+    document.getElementById("headerTitle").textContent = data.headerTitle;
+    document.getElementById("lessonTitle").textContent = data.lessonTitle;
+    document.getElementById("lessonContent").textContent = data.lessonContent;
+
+    const examplesList = document.getElementById("lessonExamples");
+    examplesList.innerHTML = "";
+    data.examples.forEach(example => {
+        const listItem = document.createElement("li");
+        listItem.textContent = example;
+        examplesList.appendChild(listItem);
+    });
+};
+
+document.getElementById("languageSelect").addEventListener("change", (e) => {
+    updateContent(e.target.value);
+});
+
+updateContent("uz");
+
+    </script>
+</body>
+</html>

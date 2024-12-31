@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Alphabet Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        main {
+            padding: 2rem;
+        }
+        .language-select {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        select {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+        .alphabet {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .letter {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .letter:hover {
+            transform: scale(1.1);
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="header-title">Learn Korean Alphabet</h1>
+        <p id="header-subtitle">Explore Hangul step by step!</p>
+    </header>
+
+    <main>
+        <div class="language-select">
+            <label for="language" id="language-label">Choose a language: </label>
+            <select id="language">
+                <option value="en">English</option>
+                <option value="tr">Turkish</option>
+                <option value="ru">Russian</option>
+                <option value="kk">Kazakh</option>
+                <option value="kg">Kyrgyz</option>
+                <option value="np">Nepali</option>
+                <option value="vn">Vietnamese</option>
+                <option value="si">Sinhala (Sri Lanka)</option>
+                <option value="bd">Bengali (Bangladesh)</option>
+                <option value="ar">Arabic</option>
+                <option value="uz">Uzbek</option>
+                <option value="th">Thai</option>
+            </select>
+        </div>
+
+        <div id="content">
+            <div class="alphabet">
+                <!-- Consonants -->
+                <div class="letter">
+                    <h2>ㄱ</h2>
+                    <p id="letter-k">Kiyeok (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㄴ</h2>
+                    <p id="letter-n">Nieun (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㄷ</h2>
+                    <p id="letter-d">Digeut (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㄹ</h2>
+                    <p id="letter-r">Rieul (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅁ</h2>
+                    <p id="letter-m">Mieum (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅂ</h2>
+                    <p id="letter-b">Bieup (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅅ</h2>
+                    <p id="letter-s">Siot (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅈ</h2>
+                    <p id="letter-j">Jieut (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅊ</h2>
+                    <p id="letter-ch">Chieut (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅇ</h2>
+                    <p id="letter-ng">Ieung (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅎ</h2>
+                    <p id="letter-h">Hieut (Consonant)</p>
+                </div>
+                <!-- Дополнительные согласные -->
+                <div class="letter">
+                    <h2>ㅋ</h2>
+                    <p id="letter-kh">Kieuk (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅌ</h2>
+                    <p id="letter-th">Tieut (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅍ</h2>
+                    <p id="letter-ph">Pieup (Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅃ</h2>
+                    <p id="letter-pp">Bieup (Double Consonant)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅉ</h2>
+                    <p id="letter-tt">Jieut (Double Consonant)</p>
+                </div>
+                
+                <!-- Гласные -->
+                <div class="letter">
+                    <h2>ㅏ</h2>
+                    <p id="letter-a">A (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅓ</h2>
+                    <p id="letter-eo">Eo (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅗ</h2>
+                    <p id="letter-o">O (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅜ</h2>
+                    <p id="letter-u">U (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅡ</h2>
+                    <p id="letter-eu">Eu (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅣ</h2>
+                    <p id="letter-i">I (Vowel)</p>
+                </div>
+                <!-- Дополнительные гласные -->
+                <div class="letter">
+                    <h2>ㅐ</h2>
+                    <p id="letter-ae">Ae (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅔ</h2>
+                    <p id="letter-e">E (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅚ</h2>
+                    <p id="letter-oe">Oe (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅟ</h2>
+                    <p id="letter-wi">Wi (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅑ</h2>
+                    <p id="letter-ya">Ya (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅕ</h2>
+                    <p id="letter-yeo">Yeo (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅛ</h2>
+                    <p id="letter-yo">Yo (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅠ</h2>
+                    <p id="letter-yu">Yu (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅘ</h2>
+                    <p id="letter-wa">Wa (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅝ</h2>
+                    <p id="letter-weo">Weo (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅙ</h2>
+                    <p id="letter-wae">Wae (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅞ</h2>
+                    <p id="letter-we">We (Vowel)</p>
+                </div>
+                <div class="letter">
+                    <h2>ㅢ</h2>
+                    <p id="letter-ui">Ui (Vowel)</p>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Learn Korean Alphabet. All rights reserved.</p>
+    </footer>
+
+    <script>
+       const translations = {
+        en: {
+                "headerTitle": "Koreys alifbosini o'rganing",
+        "headerSubtitle": "Hangulni bosqichma-bosqich o'rganing!",
+        "languageLabel": "Tilni tanlang:",
+        "letters": {
+            "k": "Kiyeok (Consonant)",
+            "n": "Nieun (Consonant)",
+            "d": "Digeut (Consonant)",
+            "r": "Rieul (Consonant)",
+            "m": "Mieum (Consonant)",
+            "b": "Bieup (Consonant)",
+            "s": "Siot (Consonant)",
+            "j": "Jieut (Consonant)",
+            "ch": "Chieut (Consonant)",
+            "ng": "Ieung (Consonant)",
+            "h": "Hieut (Consonant)",
+            "kh": "Kieuk (Consonant)",
+            "th": "Tieut (Consonant)",
+            "ph": "Pieup (Consonant)",
+            "pp": "Bieup (Double Consonant)",
+            "tt": "Jieut (Double Consonant)",
+            "a": "A (Vowel)",
+            "eo": "Eo (Vowel)",
+            "o": "O (Vowel)",
+            "u": "U (Vowel)",
+            "eu": "Eu (Vowel)",
+            "i": "I (Vowel)",
+            "ae": "Ae (Vowel)",
+            "e": "E (Vowel)",
+            "oe": "Oe (Vowel)",
+            "wi": "Wi (Vowel)",
+            "ya": "Ya (Vowel)",
+            "yeo": "Yeo (Vowel)",
+            "yo": "Yo (Vowel)",
+            "yu": "Yu (Vowel)",
+            "wa": "Wa (Vowel)",
+            "weo": "Weo (Vowel)",
+            "wae": "Wae (Vowel)",
+            "we": "We (Vowel)",
+            "ui": "Ui (Vowel)"
+                }
+            },
+            uz: {
+                "headerTitle": "Koreys alifbosini o'rganing",
+        "headerSubtitle": "Hangulni bosqichma-bosqich o'rganing!",
+        "languageLabel": "Tilni tanlang:",
+        letters: {
+            k: "Kiyeok (Unli tovush)",
+            "n": "Nieun (Unli tovush)",
+            "d": "Digeut (Unli tovush)",
+            "r": "Rieul (Unli tovush)",
+            "m": "Mieum (Unli tovush)",
+            "b": "Bieup (Unli tovush)",
+            "s": "Siot (Unli tovush)",
+            "j": "Jieut (Unli tovush)",
+            "ch": "Chieut (Unli tovush)",
+            "ng": "Ieung (Unli tovush)",
+            "h": "Hieut (Unli tovush)",
+            "kh": "Kieuk (Unli tovush)",
+            "th": "Tieut (Unli tovush)",
+            "ph": "Pieup (Unli tovush)",
+            "pp": "Bieup (Ikki unli tovush)",
+            "tt": "Jieut (Ikki unli tovush)",
+            "a": "A (Unli tovush)",
+            "eo": "Eo (Unli tovush)",
+            "o": "O (Unli tovush)",
+            "u": "U (Unli tovush)",
+            "eu": "Eu (Unli tovush)",
+            "i": "I (Unli tovush)",
+            "ae": "Ae (Unli tovush)",
+            "e": "E (Unli tovush)",
+            "oe": "Oe (Unli tovush)",
+            "wi": "Wi (Unli tovush)",
+            "ya": "Ya (Unli tovush)",
+            "yeo": "Yeo (Unli tovush)",
+            "yo": "Yo (Unli tovush)",
+            "yu": "Yu (Unli tovush)",
+            "wa": "Wa (Unli tovush)",
+            "weo": "Weo (Unli tovush)",
+            "wae": "Wae (Unli tovush)",
+            "we": "We (Unli tovush)",
+            "ui": "Ui (Unli tovush)"
+            }
+        },
+            ru: {
+                "headerTitle": "Изучите корейский алфавит",
+        "headerSubtitle": "Изучайте хангыль шаг за шагом!",
+        "languageLabel": "Выберите язык:",
+        "letters": {
+            "k": "Киек (Согласная)",
+            "n": "Ниын (Согласная)",
+            "d": "Дигыт (Согласная)",
+            "r": "Риыл (Согласная)",
+            "m": "Миым (Согласная)",
+            "b": "Биып (Согласная)",
+            "s": "Сиот (Согласная)",
+            "j": "Джиыт (Согласная)",
+            "ch": "Чиыт (Согласная)",
+            "ng": "Иын (Согласная)",
+            "h": "Хиыт (Согласная)",
+            "kh": "Киык (Согласная)",
+            "th": "Тиыт (Согласная)",
+            "ph": "Пиып (Согласная)",
+            "pp": "Биып (Двойная согласная)",
+            "tt": "Джиыт (Двойная согласная)",
+            "a": "А (Гласная)",
+            "eo": "Ео (Гласная)",
+            "o": "О (Гласная)",
+            "u": "У (Гласная)",
+            "eu": "Эу (Гласная)",
+            "i": "И (Гласная)",
+            "ae": "Э (Гласная)",
+            "e": "Э (Гласная)",
+            "oe": "Оэ (Гласная)",
+            "wi": "Уи (Гласная)",
+            "ya": "Я (Гласная)",
+            "yeo": "Ё (Гласная)",
+            "yo": "Йо (Гласная)",
+            "yu": "Ю (Гласная)",
+            "wa": "Ва (Гласная)",
+            "weo": "Вео (Гласная)",
+            "wae": "Вэ (Гласная)",
+            "we": "Вэ (Гласная)",
+            "ui": "Уи (Гласная)"
+        }
+            },
+            tr: {
+"headerTitle": "Kore Alfabesini Öğrenin",
+        "headerSubtitle": "Hangul'ü adım adım öğrenin!",
+        "languageLabel": "Dil Seçin:",
+        "letters": {
+            "k": "Kiyeok (Ünsüz)",
+            "n": "Nieun (Ünsüz)",
+            "d": "Digeut (Ünsüz)",
+            "r": "Rieul (Ünsüz)",
+            "m": "Mieum (Ünsüz)",
+            "b": "Bieup (Ünsüz)",
+            "s": "Siot (Ünsüz)",
+            "j": "Jieut (Ünsüz)",
+            "ch": "Chieut (Ünsüz)",
+            "ng": "Ieung (Ünsüz)",
+            "h": "Hieut (Ünsüz)",
+            "kh": "Kieuk (Ünsüz)",
+            "th": "Tieut (Ünsüz)",
+            "ph": "Pieup (Ünsüz)",
+            "pp": "Bieup (Çift Ünsüz)",
+            "tt": "Jieut (Çift Ünsüz)",
+            "a": "A (Ünlü)",
+            "eo": "Eo (Ünlü)",
+            "o": "O (Ünlü)",
+            "u": "U (Ünlü)",
+            "eu": "Eu (Ünlü)",
+            "i": "I (Ünlü)",
+            "ae": "Ae (Ünlü)",
+            "e": "E (Ünlü)",
+            "oe": "Oe (Ünlü)",
+            "wi": "Wi (Ünlü)",
+            "ya": "Ya (Ünlü)",
+            "yeo": "Yeo (Ünlü)",
+            "yo": "Yo (Ünlü)",
+            "yu": "Yu (Ünlü)",
+            "wa": "Wa (Ünlü)",
+            "weo": "Weo (Ünlü)",
+            "wae": "Wae (Ünlü)",
+            "we": "We (Ünlü)",
+            "ui": "Ui (Ünlü)"
+        }
+            },
+            kk: {
+"headerTitle": "Корея әліпбиін үйреніңіз",
+        "headerSubtitle": "Хангулды қадам-қадаммен үйреніңіз!",
+        "languageLabel": "Тілді таңдаңыз:",
+        "letters": {
+            "k": "Киеок (Дауыссыз)",
+            "n": "Ниын (Дауыссыз)",
+            "d": "Дигыт (Дауыссыз)",
+            "r": "Риыл (Дауыссыз)",
+            "m": "Миым (Дауыссыз)",
+            "b": "Биып (Дауыссыз)",
+            "s": "Сиот (Дауыссыз)",
+            "j": "Джиыт (Дауыссыз)",
+            "ch": "Чиыт (Дауыссыз)",
+            "ng": "Иын (Дауыссыз)",
+            "h": "Хиыт (Дауыссыз)",
+            "kh": "Киык (Дауыссыз)",
+            "th": "Тиыт (Дауыссыз)",
+            "ph": "Пиып (Дауыссыз)",
+            "pp": "Биып (Қосарлы дауыссыз)",
+            "tt": "Джиыт (Қосарлы дауыссыз)",
+            "a": "А (Дауысты)",
+            "eo": "Ео (Дауысты)",
+            "o": "О (Дауысты)",
+            "u": "У (Дауысты)",
+            "eu": "Эу (Дауысты)",
+            "i": "И (Дауысты)",
+            "ae": "Э (Дауысты)",
+            "e": "Э (Дауысты)",
+            "oe": "Оэ (Дауысты)",
+            "wi": "Уи (Дауысты)",
+            "ya": "Я (Дауысты)",
+            "yeo": "Ё (Дауысты)",
+            "yo": "Йо (Дауысты)",
+            "yu": "Ю (Дауысты)",
+            "wa": "Ва (Дауысты)",
+            "weo": "Вео (Дауысты)",
+            "wae": "Вэ (Дауысты)",
+            "we": "Вэ (Дауысты)",
+            "ui": "Уи (Дауысты)"
+        }
+},
+kg: {
+    "headerTitle": "Корей алфавитин үйрөнүңүз",
+        "headerSubtitle": "Хангулду кадам-кадам менен үйрөнүңүз!",
+        "languageLabel": "Тилди тандаңыз:",
+        "letters": {
+            "k": "Киек (Жалгыз үн)",
+            "n": "Ниын (Жалгыз үн)",
+            "d": "Дигыт (Жалгыз үн)",
+            "r": "Риыл (Жалгыз үн)",
+            "m": "Миым (Жалгыз үн)",
+            "b": "Биып (Жалгыз үн)",
+            "s": "Сиот (Жалгыз үн)",
+            "j": "Джиыт (Жалгыз үн)",
+            "ch": "Чиыт (Жалгыз үн)",
+            "ng": "Иын (Жалгыз үн)",
+            "h": "Хиыт (Жалгыз үн)",
+            "kh": "Киык (Жалгыз үн)",
+            "th": "Тиыт (Жалгыз үн)",
+            "ph": "Пиып (Жалгыз үн)",
+            "pp": "Биып (Экининче үн)",
+            "tt": "Джиыт (Экининче үн)",
+            "a": "А (Жалгыз үн)",
+            "eo": "Ео (Жалгыз үн)",
+            "o": "О (Жалгыз үн)",
+            "u": "У (Жалгыз үн)",
+            "eu": "Эу (Жалгыз үн)",
+            "i": "И (Жалгыз үн)",
+            "ae": "Э (Жалгыз үн)",
+            "e": "Э (Жалгыз үн)",
+            "oe": "Оэ (Жалгыз үн)",
+            "wi": "Уи (Жалгыз үн)",
+            "ya": "Я (Жалгыз үн)",
+            "yeo": "Ё (Жалгыз үн)",
+            "yo": "Йо (Жалгыз үн)",
+            "yu": "Ю (Жалгыз үн)",
+            "wa": "Ва (Жалгыз үн)",
+            "weo": "Вео (Жалгыз үн)",
+            "wae": "Вэ (Жалгыз үн)",
+            "we": "Вэ (Жалгыз үн)",
+            "ui": "Уи (Жалгыз үн)"
+        }
+},
+np: {
+"headerTitle": "कोरियाली वर्णमाला सिक्नुहोस्",
+        "headerSubtitle": "हंगुललाई चरणद्वारा चरण सिक्नुहोस्!",
+        "languageLabel": "भाषा चयन गर्नुहोस्:",
+        "letters": {
+            "k": "कीयोक (व्यंजन)",
+            "n": "निउन (व्यंजन)",
+            "d": "दिगुत (व्यंजन)",
+            "r": "रिउल (व्यंजन)",
+            "m": "मिउम (व्यंजन)",
+            "b": "बिउप (व्यंजन)",
+            "s": "सियोट (व्यंजन)",
+            "j": "जिउत (व्यंजन)",
+            "ch": "चिउत (व्यंजन)",
+            "ng": "इउंग (व्यंजन)",
+            "h": "हीउत (व्यंजन)",
+            "kh": "कियुक (व्यंजन)",
+            "th": "तियुत (व्यंजन)",
+            "ph": "पिउप (व्यंजन)",
+            "pp": "बिउप (दोहोरो व्यंजन)",
+            "tt": "जिउत (दोहोरो व्यंजन)",
+            "a": "अ (स्वर)",
+            "eo": "एओ (स्वर)",
+            "o": "ओ (स्वर)",
+            "u": "उ (स्वर)",
+            "eu": "एउ (स्वर)",
+            "i": "इ (स्वर)",
+            "ae": "ए (स्वर)",
+            "e": "ई (स्वर)",
+            "oe": "ओई (स्वर)",
+            "wi": "वी (स्वर)",
+            "ya": "या (स्वर)",
+            "yeo": "यो (स्वर)",
+            "yo": "यो (स्वर)",
+            "yu": "यू (स्वर)",
+            "wa": "वा (स्वर)",
+            "weo": "वियो (स्वर)",
+            "wae": "वए (स्वर)",
+            "we": "वे (स्वर)",
+            "ui": "उई (स्वर)"
+        }
+},
+vn: {
+"headerTitle": "Học bảng chữ cái Hàn Quốc",
+        "headerSubtitle": "Học Hangul từng bước một!",
+        "languageLabel": "Chọn ngôn ngữ:",
+        "letters": {
+            "k": "Kiyeok (Phụ âm)",
+            "n": "Nieun (Phụ âm)",
+            "d": "Digeut (Phụ âm)",
+            "r": "Rieul (Phụ âm)",
+            "m": "Mieum (Phụ âm)",
+            "b": "Bieup (Phụ âm)",
+            "s": "Siot (Phụ âm)",
+            "j": "Jieut (Phụ âm)",
+            "ch": "Chieut (Phụ âm)",
+            "ng": "Ieung (Phụ âm)",
+            "h": "Hieut (Phụ âm)",
+            "kh": "Kieuk (Phụ âm)",
+            "th": "Tieut (Phụ âm)",
+            "ph": "Pieup (Phụ âm)",
+            "pp": "Bieup (Phụ âm đôi)",
+            "tt": "Jieut (Phụ âm đôi)",
+            "a": "A (Nguyên âm)",
+            "eo": "Eo (Nguyên âm)",
+            "o": "O (Nguyên âm)",
+            "u": "U (Nguyên âm)",
+            "eu": "Eu (Nguyên âm)",
+            "i": "I (Nguyên âm)",
+            "ae": "Ae (Nguyên âm)",
+            "e": "E (Nguyên âm)",
+            "oe": "Oe (Nguyên âm)",
+            "wi": "Wi (Nguyên âm)",
+            "ya": "Ya (Nguyên âm)",
+            "yeo": "Yeo (Nguyên âm)",
+            "yo": "Yo (Nguyên âm)",
+            "yu": "Yu (Nguyên âm)",
+            "wa": "Wa (Nguyên âm)",
+            "weo": "Weo (Nguyên âm)",
+            "wae": "Wae (Nguyên âm)",
+            "we": "We (Nguyên âm)",
+            "ui": "Ui (Nguyên âm)"
+        }
+},
+si: {
+"headerTitle": "කොරියානු අකුරු පන්ති ඉගෙන ගන්න",
+        "headerSubtitle": "හංගුල් එකක් එක් එකක් ඉගෙන ගන්න!",
+        "languageLabel": "භාෂාව තෝරන්න:",
+        "letters": {
+            "k": "කියොක් (හඬ)",
+            "n": "නියුන් (හඬ)",
+            "d": "ඩිගුට් (හඬ)",
+            "r": "රියුල් (හඬ)",
+            "m": "මිඋම් (හඬ)",
+            "b": "බිඋප් (හඬ)",
+            "s": "සියොට් (හඬ)",
+            "j": "ජිඋත් (හඬ)",
+            "ch": "චිඋත් (හඬ)",
+            "ng": "ඉඋංග් (හඬ)",
+            "h": "හිඋත් (හඬ)",
+            "kh": "කිඋක් (හඬ)",
+            "th": "තිඋත් (හඬ)",
+            "ph": "පිඋප් (හඬ)",
+            "pp": "බිඋප් (ද්විතීයික හඬ)",
+            "tt": "ජිඋත් (ද්විතීයික හඬ)",
+            "a": "අ (වූර්)",
+            "eo": "ඉඋ (වූර්)",
+            "o": "ඕ (වූර්)",
+            "u": "උ (වූර්)",
+            "eu": "ඊඋ (වූර්)",
+            "i": "ඉ (වූර්)",
+            "ae": "ඒ (වූර්)",
+            "e": "ඉ (වූර්)",
+            "oe": "ඔආ (වූර්)",
+            "wi": "වි (වූර්)",
+            "ya": "යා (වූර්)",
+            "yeo": "යෝ (වූර්)",
+            "yo": "යෝ (වූර්)",
+            "yu": "යූ (වූර්)",
+            "wa": "වා (වූර්)",
+            "weo": "වෙ (වූර්)",
+            "wae": "වැ (වූර්)",
+            "we": "වෙ (වූර්)",
+            "ui": "උඉ (වූර්)"
+        }
+},
+bd: {
+"headerTitle": "কোরিয়ান বর্ণমালা শিখুন",
+        "headerSubtitle": "হাঙ্গুল শিখুন ধাপে ধাপে!",
+        "languageLabel": "ভাষা নির্বাচন করুন:",
+        "letters": {
+            "k": "কিয়োক (ব্যঞ্জন)",
+            "n": "নিয়ুন (ব্যঞ্জন)",
+            "d": "ডিগুট (ব্যঞ্জন)",
+            "r": "রিয়ুল (ব্যঞ্জন)",
+            "m": "মিয়ুম (ব্যঞ্জন)",
+            "b": "বিপ (ব্যঞ্জন)",
+            "s": "সিওট (ব্যঞ্জন)",
+            "j": "জিয়ুত (ব্যঞ্জন)",
+            "ch": "চিয়ুত (ব্যঞ্জন)",
+            "ng": "ইউং (ব্যঞ্জন)",
+            "h": "হিয়ুত (ব্যঞ্জন)",
+            "kh": "কিয়ুক (ব্যঞ্জন)",
+            "th": "তিয়ুত (ব্যঞ্জন)",
+            "ph": "পিইউপি (ব্যঞ্জন)",
+            "pp": "বিপ (ডাবল ব্যঞ্জন)",
+            "tt": "জিয়ুত (ডাবল ব্যঞ্জন)",
+            "a": "আ (স্বর)",
+            "eo": "এও (স্বর)",
+            "o": "ও (স্বর)",
+            "u": "উ (স্বর)",
+            "eu": "এউ (স্বর)",
+            "i": "ই (স্বর)",
+            "ae": "এ (স্বর)",
+            "e": "ই (স্বর)",
+            "oe": "ওএ (স্বর)",
+            "wi": "উই (স্বর)",
+            "ya": "য়া (স্বর)",
+            "yeo": "ইও (স্বর)",
+            "yo": "ইও (স্বর)",
+            "yu": "ইউ (স্বর)",
+            "wa": "ওয়া (স্বর)",
+            "weo": "ওএ (স্বর)",
+            "wae": "ওএ (স্বর)",
+            "we": "ওয়ে (স্বর)",
+            "ui": "ইউই (স্বর)"
+        }
+},
+ar: {
+"headerTitle": "تعلم الأبجدية الكورية",
+        "headerSubtitle": "تعلم الهانغول خطوة بخطوة!",
+        "languageLabel": "اختر اللغة:",
+        "letters": {
+            "k": "كييوك (حرف ساكن)",
+            "n": "نيون (حرف ساكن)",
+            "d": "ديغوت (حرف ساكن)",
+            "r": "ريول (حرف ساكن)",
+            "m": "ميوم (حرف ساكن)",
+            "b": "بيوب (حرف ساكن)",
+            "s": "سيوت (حرف ساكن)",
+            "j": "جيوت (حرف ساكن)",
+            "ch": "تشيون (حرف ساكن)",
+            "ng": "إيونغ (حرف ساكن)",
+            "h": "هيوت (حرف ساكن)",
+            "kh": "كيوك (حرف ساكن)",
+            "th": "تيت (حرف ساكن)",
+            "ph": "بيوب (حرف ساكن)",
+            "pp": "بيوب (حرف ساكن مزدوج)",
+            "tt": "جييت (حرف ساكن مزدوج)",
+            "a": "ا (صوت متحرك)",
+            "eo": "اوه (صوت متحرك)",
+            "o": "أو (صوت متحرك)",
+            "u": "أو (صوت متحرك)",
+            "eu": "إو (صوت متحرك)",
+            "i": "إي (صوت متحرك)",
+            "ae": "إيه (صوت متحرك)",
+            "e": "إي (صوت متحرك)",
+            "oe": "أوي (صوت متحرك)",
+            "wi": "وي (صوت متحرك)",
+            "ya": "يا (صوت متحرك)",
+            "yeo": "يو (صوت متحرك)",
+            "yo": "يو (صوت متحرك)",
+            "yu": "يو (صوت متحرك)",
+            "wa": "وا (صوت متحرك)",
+            "weo": "وإو (صوت متحرك)",
+            "wae": "وي (صوت متحرك)",
+            "we": "وي (صوت متحرك)",
+            "ui": "أوي (صوت متحرك)"
+        }
+},
+th: {
+"headerTitle": "เรียนรู้ตัวอักษรเกาหลี",
+        "headerSubtitle": "เรียนฮันกุลทีละขั้นตอน!",
+        "languageLabel": "เลือกภาษา:",
+        "letters": {
+            "k": "คิเยอก (พยัญชนะ)",
+            "n": "นียุน (พยัญชนะ)",
+            "d": "ดีกึท (พยัญชนะ)",
+            "r": "รีอุล (พยัญชนะ)",
+            "m": "มีอึม (พยัญชนะ)",
+            "b": "บีอึบ (พยัญชนะ)",
+            "s": "ซิออต (พยัญชนะ)",
+            "j": "จีอึท (พยัญชนะ)",
+            "ch": "ชีอึท (พยัญชนะ)",
+            "ng": "อิอึง (พยัญชนะ)",
+            "h": "ฮีอึท (พยัญชนะ)",
+            "kh": "คียุก (พยัญชนะ)",
+            "th": "ทีอึท (พยัญชนะ)",
+            "ph": "พีอึบ (พยัญชนะ)",
+            "pp": "บีอึบ (พยัญชนะคู่)",
+            "tt": "จีอึท (พยัญชนะคู่)",
+            "a": "อา (สระ)",
+            "eo": "อีโอ (สระ)",
+            "o": "โอ (สระ)",
+            "u": "อู (สระ)",
+            "eu": "อึ (สระ)",
+            "i": "อิ (สระ)",
+            "ae": "แอ (สระ)",
+            "e": "เอ (สระ)",
+            "oe": "โอเอ (สระ)",
+            "wi": "วี (สระ)",
+            "ya": "ยา (สระ)",
+            "yeo": "เยอ (สระ)",
+            "yo": "โย (สระ)",
+            "yu": "ยู (สระ)",
+            "wa": "วา (สระ)",
+            "weo": "เวอ (สระ)",
+            "wae": "แว (สระ)",
+            "we": "เว (สระ)",
+            "ui": "อุย (สระ)"
+        }
+},
+};
+
+document.getElementById("language").addEventListener("change", (event) => {
+    const selectedLanguage = event.target.value;
+    const translation = translations[selectedLanguage];
+
+    if (translation) {
+        // Обновление заголовков
+        document.getElementById("header-title").textContent = translation.headerTitle;
+        document.getElementById("header-subtitle").textContent = translation.headerSubtitle;
+        document.getElementById("language-label").textContent = translation.languageLabel;
+
+        // Обновление букв
+        for (const [key, text] of Object.entries(translation.letters)) {
+            const element = document.getElementById(`letter-${key}`);
+            if (element) {
+                element.textContent = text;
+            }
+        }
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Lessons</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+select {
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+main {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lesson {
+    margin-bottom: 30px;
+}
+
+.lesson h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.lesson p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.lesson ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.lesson ul li {
+    font-size: 1.1em;
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Language Lessons</h1>
+        <div>
+            <label for="language-select">Select Language:</label>
+            <select id="language-select" onchange="changeLanguage()">
+              <option value="en">English</option>
+              <option value="ru">Russian</option>
+              <option value="uz">Uzbek</option>
+              <option value="tr">Turkish</option>
+              <option value="ar">Arabic</option>
+              <option value="vi">Vietnamese</option>
+              <option value="si">Sinhala</option>
+              <option value="kk">Kazakh</option>
+              <option value="bn">Bengali</option>
+              <option value="ne">Nepali</option>
+              <option value="ky">Kyrgyz</option>
+              <option value="th">Thai</option>
+            </select>
+        </div>
+    </header>
+
+    <main id="lesson-container">
+        <!-- Lessons will be dynamically loaded here -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Language Learning Platform</p>
+    </footer>
+
+    <script>
+      const lessons = {
+        en: [
+        {
+          title: "Lesson 1: Korean Alphabet",
+          description: "In this lesson, you will learn the basics of Hangul, the Korean writing system. You will understand how to read and write the basic characters, vowels, and consonants.",
+          examples: [
+            "ㅏ (a): As in 아버지 (father).",
+            "ㅂ (b): As in 밥 (rice).",
+            "ㅎ (h): As in 하늘 (sky)."
+          ]
+        },
+        {
+          title: "Lesson 2: Basic Greetings",
+          description: "This lesson teaches you common greetings in Korean. You will learn how to say 'hello', 'good morning', 'good evening', and other basic greetings used in daily conversation.",
+          examples: [
+            "안녕하세요 (Annyeonghaseyo): Hello / Hi / Good afternoon.",
+            "좋은 아침입니다 (Joeun achimimnida): Good morning.",
+            "안녕히 가세요 (Annyeonghi gaseyo): Goodbye! (when someone is leaving)"
+          ]
+        },
+        {
+          title: "Lesson 3: Self Introduction",
+          description: "Learn how to introduce yourself in Korean. You will practice saying your name, age, nationality, and other personal details.",
+          examples: [
+            "저는 [Имя]입니다 (Jeoneun [Name] imnida): I am [Name].",
+            "저는 [나라] 사람입니다 (Jeoneun [Country] saramimnida): I am from [Country].",
+            "나이는 [Возраст]살입니다 (Naineun [Age] sal imnida): I am [Age] years old."
+          ]
+        },
+        {
+          title: "Lesson 4: Numbers",
+          description: "This lesson will teach you how to count in Korean. You will learn both the native Korean numbers and the Sino-Korean numbers used for dates, times, and counting items.",
+          examples: [
+            "하나 (Hana): One.",
+            "둘 (Dul): Two.",
+            "셋 (Set): Three.",
+            "일 (Il): One (used in Sino-Korean system for counting)."
+          ]
+        },
+        {
+          title: "Lesson 5: Days and Months",
+          description: "In this lesson, you will learn how to say the days of the week and the months of the year in Korean. You will also learn how to ask and tell the date.",
+          examples: [
+            "월요일 (Woryoil): Monday.",
+            "화요일 (Hwayoil): Tuesday.",
+            "1월 (Iwol): January."
+          ]
+        },
+        {
+          title: "Lesson 6: Common Phrases",
+          description: "This lesson introduces essential phrases for everyday conversations. You will learn expressions for asking for help, making requests, and other useful phrases.",
+          examples: [
+            "도와주세요 (Dowajuseyo): Please help me.",
+            "감사합니다 (Gamsahamnida): Thank you.",
+            "죄송합니다 (Joesonghamnida): I'm sorry."
+          ]
+        },
+        {
+          title: "Lesson 7: Asking Questions",
+          description: "Learn how to ask basic questions in Korean. You will learn question words like 'what', 'where', 'how', and 'why', as well as how to form simple questions.",
+          examples: [
+            "뭐예요? (Mwoyeyo?): What is it?",
+            "어디에요? (Eodieyo?): Where is it?",
+            "왜요? (Waeyo?): Why?"
+          ]
+        },
+        {
+          title: "Lesson 8: Food Vocabulary",
+          description: "In this lesson, you will learn Korean vocabulary related to food. You will be able to order food at a restaurant, talk about your favorite foods, and more.",
+          examples: [
+            "밥 (Bap): Rice.",
+            "김치 (Kimchi): Kimchi (fermented vegetables).",
+            "고기 (Gogi): Meat."
+          ]
+        },
+        {
+          title: "Lesson 9: Shopping",
+          description: "This lesson will teach you basic phrases for shopping in Korea. You will learn how to ask for prices, sizes, and make purchases.",
+          examples: [
+            "이거 얼마에요? (Igeo eolmaeyo?): How much is this?",
+            "큰 사이즈 있어요? (Keun saijeu isseoyo?): Do you have a larger size?",
+            "이거 사고 싶어요 (Igeo sago sipeoyo): I want to buy this."
+          ]
+        },
+        {
+          title: "Lesson 10: Directions",
+          description: "In this lesson, you will learn how to ask for and give directions in Korean. You will also learn how to navigate common locations like the subway, stores, and restaurants.",
+          examples: [
+            "왼쪽 (Oenjjok): Left.",
+            "오른쪽 (Oreunjjok): Right.",
+            "직진 (Jikjin): Straight ahead."
+          ]
+        },
+        {
+          title: "Lesson 11: Transportation",
+          description: "Learn essential vocabulary for using transportation in Korea. This lesson will help you understand how to navigate public transit, ask for a ride, and more.",
+          examples: [
+            "버스 (Beoseu): Bus.",
+            "지하철 (Jihacheol): Subway.",
+            "택시 (Taeksi): Taxi."
+          ]
+        },
+        {
+          title: "Lesson 12: Weather",
+          description: "In this lesson, you will learn how to talk about the weather in Korean. You will be able to describe the weather, ask about the forecast, and talk about the seasons.",
+          examples: [
+            "날씨가 좋아요 (Nalssiga joayo): The weather is nice.",
+            "비가 와요 (Bigawayo): It’s raining.",
+            "덥다 (Deopda): It’s hot."
+          ]
+        },
+        {
+          title: "Lesson 13: Family",
+          description: "Learn vocabulary related to family members in Korean. You will be able to talk about your family, introduce family members, and ask others about theirs.",
+          examples: [
+            "어머니 (Eomeoni): Mother.",
+            "아버지 (Abeoji): Father.",
+            "형 (Hyeong): Older brother (for males)."
+          ]
+        },
+        {
+          title: "Lesson 14: Occupations",
+          description: "This lesson will teach you common occupations in Korean. You will learn job titles, how to ask about someone's profession, and describe your own work.",
+          examples: [
+            "의사 (Uisa): Doctor.",
+            "선생님 (Seonsaengnim): Teacher.",
+            "직원 (Jigwon): Employee."
+          ]
+        },
+        {
+          title: "Lesson 15: Hobbies",
+          description: "In this lesson, you will learn how to talk about your hobbies in Korean. You will practice expressing your interests, likes, and dislikes.",
+          examples: [
+            "운동 (Undong): Exercise.",
+            "영화 보기 (Yeonghwa bogi): Watching movies.",
+            "독서 (Dokseo): Reading books."
+          ]
+        },
+        {
+          title: "Lesson 16: Time",
+          description: "Learn how to tell the time in Korean. You will practice asking for the time, understanding time-related vocabulary, and describing your daily schedule.",
+          examples: [
+            "지금 몇 시에요? (Jigeum myeot siyeyo?): What time is it now?",
+            "3시 (3si): 3 o'clock.",
+            "오전 (Ojeon): AM."
+          ]
+        },
+        {
+          title: "Lesson 17: Places",
+          description: "In this lesson, you will learn words for common places in Korean. You will be able to talk about locations such as home, school, office, and public places.",
+          examples: [
+            "집 (Jip): House.",
+            "학교 (Hakgyo): School.",
+            "병원 (Byeongwon): Hospital."
+          ]
+        },
+        {
+          title: "Lesson 18: Adjectives",
+          description: "Learn common adjectives in Korean. You will be able to describe things, people, and situations in more detail using adjectives.",
+          examples: [
+            "큰 (Keun): Big.",
+            "작은 (Jageun): Small.",
+            "빠른 (Ppareun): Fast."
+          ]
+        },
+        {
+          title: "Lesson 19: Verbs",
+          description: "This lesson teaches you basic verbs and their usage in Korean. You will learn how to express actions, make requests, and form simple sentences.",
+          examples: [
+            "하다 (Hada): To do.",
+            "가다 (Gada): To go.",
+            "먹다 (Meokda): To eat."
+          ]
+        },
+        {
+          title: "Lesson 20: Practice",
+          description: "In the final lesson, you will practice basic conversations in Korean. This lesson will help you reinforce what you have learned in the previous lessons.",
+          examples: [
+            "안녕하세요! 이름이 뭐에요? (Annyeonghaseyo! Ireumi mwoyeyo?): Hello! What is your name?",
+            "저는 [이름]이에요. (Jeoneun [Name] ieyo): I am [Name].",
+            "어디 가요? (Eodi gayo?): Where are you going?"
+          ]
+        }
+      ],
+      uz: [
+    {
+      title: "1-dars: Koreys alifbosi",
+      description: "Bu darsda siz Koreys yozuv tizimi bo‘lgan Hangul asoslarini o‘rganasiz. Siz harflar, undosh va unli tovushlarni o‘qish va yozishni tushunasiz.",
+      examples: [
+        "ㅏ (a): 아버지 (ota) so‘zida.",
+        "ㅂ (b): 밥 (guruch) so‘zida.",
+        "ㅎ (h): 하늘 (osmon) so‘zida."
+      ]
+    },
+    {
+      title: "2-dars: Asosiy salomlashuvlar",
+      description: "Bu darsda siz koreys tilida umumiy salomlashuvlarni o‘rganasiz. Siz 'salom', 'yaxshi tong', 'yaxshi kechqurun' va boshqa kundalik suhbatlarda ishlatiladigan salomlarni o‘rganasiz.",
+      examples: [
+        "안녕하세요 (Annyeonghaseyo): Salom / Salomlashish / Yaxshi kun.",
+        "좋은 아침입니다 (Joeun achimimnida): Yaxshi tong.",
+        "안녕히 가세요 (Annyeonghi gaseyo): Xayr! (ketayotgan odam uchun)"
+      ]
+    },
+    {
+      title: "3-dars: O‘zini tanishtirish",
+      description: "Koreys tilida o‘zini tanishtirishni o‘rganasiz. Ismingiz, yoshingiz, millatingiz va boshqa shaxsiy ma'lumotlarni qanday aytishni mashq qilasiz.",
+      examples: [
+        "저는 [Ism]입니다 (Jeoneun [Ism] imnida): Men [Ism]man.",
+        "저는 [Mamlakat] 사람입니다 (Jeoneun [Mamlakat] saramimnida): Men [Mamlakat]danman.",
+        "나이는 [Yosh]살입니다 (Naineun [Yosh] sal imnida): Men [Yosh] yoshdaman."
+      ]
+    },
+    {
+      title: "4-dars: Sonlar",
+      description: "Bu darsda siz koreys tilida sanashni o‘rganasiz. Siz koreysning o‘ziga xos sonlarini va sino-koreys sonlarini o‘rganasiz, bu sonlar sanash, sanalarni va vaqtni ifodalashda ishlatiladi.",
+      examples: [
+        "하나 (Hana): Bir.",
+        "둘 (Dul): Ikki.",
+        "셋 (Set): Uch.",
+        "일 (Il): Bir (sino-koreys soni)."
+      ]
+    },
+    {
+      title: "5-dars: Hafta kunlari va oylar",
+      description: "Bu darsda siz hafta kunlarini va yil oylarini koreys tilida qanday aytishni o‘rganasiz. Shuningdek, sanani qanday so‘rashni va aytishni ham o‘rganasiz.",
+      examples: [
+        "월요일 (Woryoil): Dushanba.",
+        "화요일 (Hwayoil): Seshanba.",
+        "1월 (Iwol): Yanvar."
+      ]
+    },
+    {
+      title: "6-dars: Umumiy iboralar",
+      description: "Bu darsda siz kundalik suhbatlar uchun zarur bo‘lgan iboralarni o‘rganasiz. Yordam so‘rash, so‘rovlar qilish va boshqa foydali iboralarni o‘rganasiz.",
+      examples: [
+        "도와주세요 (Dowajuseyo): Iltimos, yordam bering.",
+        "감사합니다 (Gamsahamnida): Rahmat.",
+        "죄송합니다 (Joesonghamnida): Kechirasiz."
+      ]
+    },
+    {
+      title: "7-dars: Savollarni so‘rash",
+      description: "Bu darsda siz koreys tilida oddiy savollarni qanday so‘rashni o‘rganasiz. Siz 'nima', 'qayerda', 'qanday', 'nega' kabi so‘roq so‘zlarini o‘rganasiz va oddiy savollarni qanday tuzishni bilib olasiz.",
+      examples: [
+        "뭐예요? (Mwoyeyo?): Bu nima?",
+        "어디에요? (Eodieyo?): Bu qayerda?",
+        "왜요? (Waeyo?): Nega?"
+      ]
+    },
+    {
+      title: "8-dars: Oziq-ovqat lug‘ati",
+      description: "Bu darsda siz oziq-ovqat bilan bog‘liq koreyscha so‘zlarni o‘rganasiz. Restoranda buyurtma berishni, sevimli taomlaringiz haqida gaplashishni va boshqalarni o‘rganasiz.",
+      examples: [
+        "밥 (Bap): Guruch.",
+        "김치 (Kimchi): Kimchi (fermentlangan sabzavotlar).",
+        "고기 (Gogi): Go‘sht."
+      ]
+    },
+    {
+      title: "9-dars: Xarid qilish",
+      description: "Bu darsda siz Koreyada xarid qilish uchun asosiy iboralarni o‘rganasiz. Narxlarni, o‘lchamlarni so‘rash va sotib olishni qanday qilishni bilib olasiz.",
+      examples: [
+        "이거 얼마에요? (Igeo eolmaeyo?): Bu nechaga?",
+        "큰 사이즈 있어요? (Keun saijeu isseoyo?): Kattaroq o‘lcham bor-mi?",
+        "이거 사고 싶어요 (Igeo sago sipeoyo): Men buni sotib olmoqchiman."
+      ]
+    },
+    {
+      title: "10-dars: Yo‘nalishlar",
+      description: "Bu darsda siz koreys tilida yo‘nalishlarni qanday so‘rashni va berishni o‘rganasiz. Shuningdek, metro, do‘konlar va restoranlar kabi joylar haqida gaplashishni bilib olasiz.",
+      examples: [
+        "왼쪽 (Oenjjok): Chap.",
+        "오른쪽 (Oreunjjok): O‘ng.",
+        "직진 (Jikjin): To‘g‘ri."
+      ]
+    },
+    {
+      title: "11-dars: Transport",
+      description: "Bu darsda siz Koreyada transport vositalariga oid lug‘atni o‘rganasiz. Jamoat transportidan foydalanish, mashina so‘rash va boshqalarni bilib olasiz.",
+      examples: [
+        "버스 (Beoseu): Avtobus.",
+        "지하철 (Jihacheol): Metro.",
+        "택시 (Taeksi): Taksi."
+      ]
+    },
+    {
+      title: "12-dars: Havo",
+      description: "Bu darsda siz koreys tilida havo haqida qanday gapirishni o‘rganasiz. Havo holatini tasvirlash, ob-havo prognozini so‘rash va fasllar haqida gaplashishni bilib olasiz.",
+      examples: [
+        "날씨가 좋아요 (Nalssiga joayo): Havo yaxshi.",
+        "비가 와요 (Bigawayo): Yomg‘ir yog‘moqda.",
+        "덥다 (Deopda): Issiq."
+      ]
+    },
+    {
+      title: "13-dars: Oilaviy a’zolar",
+      description: "Bu darsda siz koreys tilida oila a’zolariga oid so‘zlarni o‘rganasiz. Oila a’zolaringiz haqida gaplashishni, ularning ism-shariflarini tanishtirishni va boshqalar haqida so‘rashni o‘rganasiz.",
+      examples: [
+        "어머니 (Eomeoni): Ona.",
+        "아버지 (Abeoji): Ota.",
+        "형 (Hyeong): Katta aka (erkaklar uchun)."
+      ]
+    },
+    {
+      title: "14-dars: Kasblar",
+      description: "Bu darsda siz koreys tilida kasblar va ish joylari haqida so‘zlashni o‘rganasiz. Ish nomlarini o‘rganasiz, odamlarning kasbini qanday so‘rashni va o‘z kasbingizni ta'riflashni bilib olasiz.",
+      examples: [
+        "의사 (Uisa): Shifokor.",
+        "선생님 (Seonsaengnim): O‘qituvchi.",
+        "직원 (Jigwon): Xodim."
+      ]
+    },
+    {
+      title: "15-dars: Hobbilar",
+      description: "Bu darsda siz koreys tilida hobbilar haqida qanday gapirishni o‘rganasiz. Sevimli mashg‘ulotlaringizni, yoqtirgan narsalaringizni va yoqtirmagan narsalaringizni ifodalashni o‘rganasiz.",
+      examples: [
+        "운동 (Undong): Sport.",
+        "영화 보기 (Yeonghwa bogi): Film tomosha qilish.",
+        "독서 (Dokseo): Kitob o‘qish."
+      ]
+    },
+    {
+      title: "16-dars: Vaqt",
+      description: "Bu darsda siz koreys tilida vaqtni qanday aytishni o‘rganasiz. Vaqtni so‘rash, vaqtga oid so‘zlarni tushunish va kundalik jadvalingizni tasvirlashni o‘rganasiz.",
+      examples: [
+        "지금 몇 시에요? (Jigeum myeot siyeyo?): Hozir qancha vaqt?",
+        "3시 (3si): Soat 3.",
+        "오전 (Ojeon): Ertalab."
+      ]
+    },
+    {
+      title: "17-dars: Joylar",
+      description: "Bu darsda siz koreys tilida umumiy joylar haqida so‘zlashni o‘rganasiz. Uy, maktab, ishxonalar, jamoat joylari haqida gaplashishni o‘rganasiz.",
+      examples: [
+        "집 (Jip): Uy.",
+        "학교 (Hakgyo): Maktab.",
+        "병원 (Byeongwon): Kasalxona."
+      ]
+    },
+    {
+      title: "18-dars: Sifatlar",
+      description: "Bu darsda siz koreys tilida umumiy sifatlarni o‘rganasiz. Narsalar, odamlar va vaziyatlarni yanada batafsil tasvirlashni o‘rganasiz.",
+      examples: [
+        "큰 (Keun): Katta.",
+        "작은 (Jageun): Kichik.",
+        "빠른 (Ppareun): Tez."
+      ]
+    },
+    {
+      title: "19-dars: Fe'llar",
+      description: "Bu darsda siz koreys tilida oddiy fe’llar va ularning qo‘llanilishini o‘rganasiz. Harakatlarni ifodalash, so‘rovlar qilish va oddiy jumlalarni tuzishni bilib olasiz.",
+      examples: [
+        "하다 (Hada): Qilmoq.",
+        "가다 (Gada): Ketmoq.",
+        "먹다 (Meokda): Yemoq."
+      ]
+    },
+    {
+      title: "20-dars: Mashq qilish",
+      description: "Oxirgi darsda siz koreys tilidagi oddiy suhbatlarni mashq qilasiz. Bu darsda oldingi darslarda o‘rganganlaringizni mustahkamlaysiz.",
+      examples: [
+        "안녕하세요! 이름이 뭐에요? (Annyeonghaseyo! Ireumi mwoyeyo?): Salom! Ismingiz nima?",
+        "저는 [Ism]이에요. (Jeoneun [Ism] ieyo): Men [Ism]man.",
+        "어디 가요? (Eodi gayo?): Qayerga ketyapsiz?"
+      ]
+    }
+],
+ ru: [
+    {
+      "title": "Урок 1: Корейский алфавит",
+      "description": "На этом уроке вы изучите основы хангыль — корейской письменности. Вы научитесь читать и писать базовые символы, гласные и согласные.",
+      "examples": [
+        "ㅏ (а): Как в слове 아버지 (отец).",
+        "ㅂ (б): Как в слове 밥 (рис).",
+        "ㅎ (х): Как в слове 하늘 (небо)."
+      ]
+    },
+    {
+      "title": "Урок 2: Основные приветствия",
+      "description": "На этом уроке вы изучите распространенные приветствия на корейском языке. Вы научитесь говорить 'привет', 'доброе утро', 'добрый вечер' и другие основные фразы, используемые в повседневной беседе.",
+      "examples": [
+        "안녕하세요 (Аннёнхасеё): Привет / Здравствуйте / Добрый день.",
+        "좋은 아침입니다 (Джоун ачимимнида): Доброе утро.",
+        "안녕히 가세요 (Аннёнхи касеё): До свидания! (когда кто-то уходит)"
+      ]
+    },
+    {
+      "title": "Урок 3: Представление себя",
+      "description": "Вы научитесь представляться на корейском языке. Вы будете практиковаться в том, чтобы говорить свое имя, возраст, национальность и другие личные данные.",
+      "examples": [
+        "저는 [Имя]입니다 (Чонын [Name] имнида): Я [Имя].",
+        "저는 [Страна] 사람입니다 (Чонын [Country] сарамимнида): Я из [Страна].",
+        "나이는 [Возраст]살입니다 (Найнын [Age] саль имнида): Мне [Возраст] лет."
+      ]
+    },
+    {
+      "title": "Урок 4: Числа",
+      "description": "На этом уроке вы научитесь считать на корейском языке. Вы изучите как корейские, так и китайско-корейские числа, которые используются для обозначения дат, времени и подсчета предметов.",
+      "examples": [
+        "하나 (Хана): Один.",
+        "둘 (Дуль): Два.",
+        "셋 (Сет): Три.",
+        "일 (Иль): Один (используется в китайско-корейской системе для счета)."
+      ]
+    },
+    {
+      "title": "Урок 5: Дни недели и месяцы",
+      "description": "На этом уроке вы научитесь называть дни недели и месяцы года на корейском языке. Вы также научитесь спрашивать и говорить дату.",
+      "examples": [
+        "월요일 (Уорёиль): Понедельник.",
+        "화요일 (Хваёиль): Вторник.",
+        "1월 (Иволь): Январь."
+      ]
+    },
+    {
+      "title": "Урок 6: Общие фразы",
+      "description": "Этот урок введет вас в основные фразы для повседневных разговоров. Вы научитесь выражать просьбы, благодарности и другие полезные выражения.",
+      "examples": [
+        "도와주세요 (Доаджусеё): Помогите, пожалуйста.",
+        "감사합니다 (Камсахамнида): Спасибо.",
+        "죄송합니다 (Джесонхамнида): Извините."
+      ]
+    },
+    {
+      "title": "Урок 7: Задавание вопросов",
+      "description": "Вы научитесь задавать основные вопросы на корейском языке. Вы будете изучать такие вопросительные слова, как 'что', 'где', 'как' и 'почему', а также как строить простые вопросы.",
+      "examples": [
+        "뭐예요? (Мвоеё?): Что это?",
+        "어디에요? (Одиё?): Где это?",
+        "왜요? (Ваеё?): Почему?"
+      ]
+    },
+    {
+      "title": "Урок 8: Лексика о еде",
+      "description": "На этом уроке вы изучите корейские слова, связанные с едой. Вы сможете заказать еду в ресторане, поговорить о своих любимых блюдах и многом другом.",
+      "examples": [
+        "밥 (Бап): Рис.",
+        "김치 (Кимчи): Кимчи (ферментированные овощи).",
+        "고기 (Коги): Мясо."
+      ]
+    },
+    {
+      "title": "Урок 9: Шоппинг",
+      "description": "Этот урок научит вас основным фразам для покупок в Корее. Вы научитесь спрашивать о ценах, размерах и делать покупки.",
+      "examples": [
+        "이거 얼마에요? (Иге ольмаеё?): Сколько это стоит?",
+        "큰 사이즈 있어요? (Кын саиджу иссёё?): Есть ли более крупный размер?",
+        "이거 사고 싶어요 (Иге саго сипёё): Я хочу купить это."
+      ]
+    },
+    {
+      "title": "Урок 10: Направления",
+      "description": "На этом уроке вы научитесь спрашивать и давать указания на корейском языке. Вы также научитесь ориентироваться в таких местах, как метро, магазины и рестораны.",
+      "examples": [
+        "왼쪽 (Онджок): Налево.",
+        "오른쪽 (Орынджок): Направо.",
+        "직진 (Чикджин): Прямо."
+      ]
+    },
+    {
+      "title": "Урок 11: Транспорт",
+      "description": "Изучите важную лексику для использования транспорта в Корее. Этот урок поможет вам понять, как ориентироваться в общественном транспорте, спрашивать о поездке и многом другом.",
+      "examples": [
+        "버스 (Бос): Автобус.",
+        "지하철 (Чихачхоль): Метро.",
+        "택시 (Тэкси): Такси."
+      ]
+    },
+    {
+      "title": "Урок 12: Погода",
+      "description": "На этом уроке вы научитесь говорить о погоде на корейском языке. Вы сможете описывать погоду, спрашивать о прогнозе и говорить о временах года.",
+      "examples": [
+        "날씨가 좋아요 (Нальссига чоаё): Погода хорошая.",
+        "비가 와요 (Бига ваё): Идет дождь.",
+        "덥다 (Допда): Жарко."
+      ]
+    },
+    {
+      "title": "Урок 13: Семья",
+      "description": "Изучите лексику, связанную с членами семьи на корейском языке. Вы сможете говорить о своей семье, представлять членов семьи и спрашивать других о их семьях.",
+      "examples": [
+        "어머니 (Омони): Мать.",
+        "아버지 (Абоджи): Отец.",
+        "형 (Хён): Старший брат (для мужчин)."
+      ]
+    },
+    {
+      "title": "Урок 14: Профессии",
+      "description": "На этом уроке вы изучите общие профессии на корейском языке. Вы научитесь называть должности, спрашивать о профессии человека и описывать свою работу.",
+      "examples": [
+        "의사 (Уиса): Врач.",
+        "선생님 (Сёнсэнним): Учитель.",
+        "직원 (Чигвон): Работник."
+      ]
+    },
+    {
+      "title": "Урок 15: Хобби",
+      "description": "На этом уроке вы научитесь говорить о своих хобби на корейском языке. Вы будете практиковаться в выражении своих интересов, предпочтений и антипатий.",
+      "examples": [
+        "운동 (Ундон): Физическая активность.",
+        "영화 보기 (Ёнхва боги): Просмотр фильмов.",
+        "독서 (Доксо): Чтение книг."
+      ]
+    },
+    {
+      "title": "Урок 16: Время",
+      "description": "Вы научитесь спрашивать и говорить о времени на корейском языке. Вы будете практиковаться в том, чтобы спрашивать время, понимать слова, связанные с временем, и описывать свой распорядок дня.",
+      "examples": [
+        "지금 몇 시에요? (Чигым мёт сиэё?): Который час?",
+        "3시 (3си): Три часа.",
+        "오전 (Оджон): Утро."
+      ]
+    },
+    {
+      "title": "Урок 17: Места",
+      "description": "На этом уроке вы научитесь называть корейские слова для различных мест. Вы сможете говорить о таких местах, как дом, школа, офис и общественные места.",
+      "examples": [
+        "집 (Чип): Дом.",
+        "학교 (Хаккё): Школа.",
+        "병원 (Пхёнвон): Больница."
+      ]
+    },
+    {
+      "title": "Урок 18: Прилагательные",
+      "description": "Изучите распространенные прилагательные на корейском языке. Вы будете описывать вещи, людей и ситуации, используя прилагательные.",
+      "examples": [
+        "큰 (Кын): Большой.",
+        "작은 (Чагын): Маленький.",
+        "빠른 (Ппарын): Быстрый."
+      ]
+    },
+    {
+      "title": "Урок 19: Глаголы",
+      "description": "На этом уроке вы изучите основные глаголы на корейском языке. Вы научитесь выражать действия и строить простые предложения.",
+      "examples": [
+        "하다 (Хада): Делать.",
+        "가다 (Када): Идти.",
+        "먹다 (Мокта): Есть."
+      ]
+    },
+    {
+      "title": "Урок 20: Практика",
+      "description": "На последнем уроке вы будете практиковать основные фразы, которые изучили на предыдущих уроках. Это поможет вам закрепить знания и уверенно использовать корейский язык в повседневных ситуациях.",
+      "examples": [
+        "안녕하세요! 이름이 뭐에요? (Аннёнхасеё! Ирими мвоеё?): Привет! Как тебя зовут?",
+        "저는 [Имя]이에요. (Чонын [Name] иеё): Я [Имя].",
+        "어디 가요? (Оди каё?): Куда ты идешь?"
+      ]
+    }
+  ],
+  
+  kk : [
+    {
+      "title": "1-Урок: Корей алфавитi",
+      "description": "Бұл сабақта сіз хангыль, яғни корей жазу жүйесінің негіздерін үйренесіз. Сіз әріптерді, дауысты және дауыссыз әріптерді оқу мен жазуды меңгересіз.",
+      "examples": [
+        "ㅏ (а): Әкесі (아버지) сөзінде.",
+        "ㅂ (б): Тары (밥) сөзінде.",
+        "ㅎ (х): Аспан (하늘) сөзінде."
+      ]
+    },
+    {
+      "title": "2-Урок: Негізгі амандасу сөздері",
+      "description": "Бұл сабақта сіз корей тіліндегі жиі қолданылатын амандасу сөздерін үйренесіз. Сіз 'сәлем', 'қайырлы таң', 'қайырлы кеш' және басқа да күнделікті сөйлесулерде қолданылатын сөздермен танысасыз.",
+      "examples": [
+        "안녕하세요 (Аннёнхасеё): Сәлем / Здравствуйте / Қайырлы күн.",
+        "좋은 아침입니다 (Джоун ачимимнида): Қайырлы таң.",
+        "안녕히 가세요 (Аннёнхи касеё): Сау болыңыз! (кезінде кім кетіп бара жатқанда)"
+      ]
+    },
+    {
+      "title": "3-Урок: Өзіңізді таныстыру",
+      "description": "Корей тілінде өзіңізді қалай таныстыруды үйренесіз. Сіз өз атыңызды, жасыңызды, ұлттық мақтанышыңызды және басқа да жеке деректерді айтуға машықтанасыз.",
+      "examples": [
+        "저는 [Аты]입니다 (Чонын [Аты] имнида): Мен [Аты] боламын.",
+        "저는 [Ел] 사람입니다 (Чонын [Ел] сарамимнида): Мен [Ел]тенмін.",
+        "나이는 [Жасы]살입니다 (Найнын [Жасы] саль имнида): Мен [Жасы] жаспын."
+      ]
+    },
+    {
+      "title": "4-Урок: Санақ",
+      "description": "Бұл сабақта сіз корей тілінде санауды үйренесіз. Сіз корей және қытай-корей сандарының қалай қолданылатынын, олардың күндер мен уақыттарды айқындау үшін қалай пайдаланылатынын үйренесіз.",
+      "examples": [
+        "하나 (Хана): Бір.",
+        "둘 (Дул): Екі.",
+        "셋 (Сет): Үш.",
+        "일 (Иль): Бір (қытай-корей жүйесінде санау үшін)."
+      ]
+    },
+    {
+      "title": "5-Урок: Апта күндері және айлар",
+      "description": "Бұл сабақта сіз апта күндері мен айларды корей тілінде қалай айтуға болатынын үйренесіз. Сондай-ақ, даталар мен уақыттарды сұрау мен айтуға арналған сөздермен танысасыз.",
+      "examples": [
+        "월요일 (Уорёиль): Дүйсенбі.",
+        "화요일 (Хваёиль): Сейсенбі.",
+        "1월 (Иволь): Қаңтар."
+      ]
+    },
+    {
+      "title": "6-Урок: Негізгі сөздер",
+      "description": "Бұл сабақта сіз күнделікті сөйлесулерде қолданылатын маңызды сөздермен танысасыз. Сіз көмек сұрау, алғыс айту және басқа да пайдалы сөздерді үйренесіз.",
+      "examples": [
+        "도와주세요 (Доаджусеё): Көмектесіңізші.",
+        "감사합니다 (Камсахамнида): Рахмет.",
+        "죄송합니다 (Джесонхамнида): Кешіріңіз."
+      ]
+    },
+    {
+      "title": "7-Урок: Сұрақ қою",
+      "description": "Корей тілінде негізгі сұрақтарды қоюды үйренесіз. Сіз 'не', 'қайда', 'қалай' және 'неге' сияқты сұрақ сөздерін және қарапайым сұрақтарды құрастыруды үйренесіз.",
+      "examples": [
+        "뭐예요? (Мвоеё?): Бұл не?",
+        "어디에요? (Одиё?): Бұл қайда?",
+        "왜요? (Ваеё?): Неліктен?"
+      ]
+    },
+    {
+      "title": "8-Урок: Азық-түлік лексикасы",
+      "description": "Бұл сабақта сіз корей тіліндегі тамаққа қатысты сөздерді үйренесіз. Сіз мейрамханада тамақ тапсырыс беруді, сүйікті тағамдарыңыз туралы сөйлесуді және басқа да азық-түлік сөздерін үйренесіз.",
+      "examples": [
+        "밥 (Бап): Тары.",
+        "김치 (Кимчи): Кимчи (қышқылдалған көкөністер).",
+        "고기 (Коги): Ет."
+      ]
+    },
+    {
+      "title": "9-Урок: Сатып алу",
+      "description": "Бұл сабақта сіз Кореяда сатып алу кезінде қолданылатын негізгі сөздермен танысасыз. Сіз бағалар, өлшемдер туралы сұрау және сатып алу рәсімдерін үйренесіз.",
+      "examples": [
+        "이거 얼마에요? (Иге ольмаеё?): Бұл қанша тұрады?",
+        "큰 사이즈 있어요? (Кын саиджу иссёё?): Үлкен өлшем бар ма?",
+        "이거 사고 싶어요 (Иге саго сипёё): Мен мұны сатып алғым келеді."
+      ]
+    },
+    {
+      "title": "10-Урок: Бағыттар",
+      "description": "Бұл сабақта сіз корей тілінде бағыттарды сұрауды және беруді үйренесіз. Сондай-ақ, метро, дүкендер мен мейрамханалар сияқты жиі кездесетін жерлерде бағдар ала аласыз.",
+      "examples": [
+        "왼쪽 (Онджок): Солға.",
+        "오른쪽 (Орынджок): Оңға.",
+        "직진 (Чикджин): Тікелей."
+      ]
+    },
+    {
+      "title": "11-Урок: Транспорт",
+      "description": "Бұл сабақта сіз Кореяда қоғамдық көлікпен жүріп-тұру үшін қажетті лексиканы үйренесіз. Сіз такси сұрау, қоғамдық көлікте жүру және тағы басқа пайдалы сөздерді меңгересіз.",
+      "examples": [
+        "버스 (Бос): Автобус.",
+        "지하철 (Чихачхоль): Метро.",
+        "택시 (Тэкси): Такси."
+      ]
+    },
+    {
+      "title": "12-Урок: Погода",
+      "description": "Бұл сабақта сіз корей тілінде ауа райы туралы сөйлесуді үйренесіз. Сіз ауа райын сипаттауды, болжауды сұрауды және төрт мезгіл туралы айтуға машықтанасыз.",
+      "examples": [
+        "날씨가 좋아요 (Нальссига чоаё): Ауа райы жақсы.",
+        "비가 와요 (Бига ваё): Жаңбыр жауып тұр.",
+        "덥다 (Допда): Ыстық."
+      ]
+    },
+    {
+      "title": "13-Урок: Отбасы",
+      "description": "Бұл сабақта сіз отбасы мүшелеріне қатысты сөздерді үйренесіз. Сіз отбасыңыз туралы айтуға, отбасы мүшелерін таныстыруға және басқа адамдардың отбасын сұрауға машықтанасыз.",
+      "examples": [
+        "어머니 (Омони): Ана.",
+        "아버지 (Абоджи): Әке.",
+        "형 (Хён): Үлкен ағай (ер адамдар үшін)."
+      ]
+    },
+    {
+      "title": "14-Урок: Мамандықтар",
+      "description": "Бұл сабақта сіз корей тіліндегі мамандықтарды үйренесіз. Сіз жұмыс атауларын, адамдардың мамандығы туралы сұрау және өз жұмысыңызды сипаттауды үйренесіз.",
+      "examples": [
+        "의사 (Уиса): Дәрігер.",
+        "선생님 (Сёнсэнним): Мұғалім.",
+        "직원 (Чигвон): Қызметкер."
+      ]
+    },
+    {
+      "title": "15-Урок: Хоббилар",
+      "description": "Бұл сабақта сіз өз хоббиларыңыз туралы корей тілінде сөйлесуді үйренесіз. Сіз қызығушылықтарыңыз, ұнататын және ұнатпайтын нәрселеріңіз туралы айтуға машықтанасыз.",
+      "examples": [
+        "운동 (Ундон): Дене шынықтыру.",
+        "영화 보기 (Ёнхва боги): Кино көру.",
+        "독서 (Доксо): Кітап оқу."
+      ]
+    },
+    {
+      "title": "16-Урок: Уақыт",
+      "description": "Бұл сабақта сіз корей тілінде уақытты сұрауды және айтуды үйренесіз. Сіз уақытпен байланысты сөздерді түсінуді, уақытты сұрауды және күнделікті күн тәртібіңізді сипаттауды үйренесіз.",
+      "examples": [
+        "지금 몇 시에요? (Чигым мёт сиэё?): Қазір қанша уақыт?",
+        "3시 (3си): Үш сағат.",
+        "오전 (Оджон): Таң."
+      ]
+    },
+    {
+      "title": "17-Урок: Орындар",
+      "description": "Бұл сабақта сіз корей тіліндегі орындар туралы сөздермен танысасыз. Сіз үйіңізді, мектебіңізді, офисіңізді және қоғамдық орындарды сипаттауға үйренесіз.",
+      "examples": [
+        "집 (Чип): Үй.",
+        "학교 (Хаккё): Мектеп.",
+        "병원 (Пёнвон): Аурухана."
+      ]
+    },
+    {
+      "title": "18-Урок: Сын есімдер",
+      "description": "Бұл сабақта сіз корей тіліндегі жиі қолданылатын сын есімдермен танысасыз. Сіз заттарды, адамдарды және жағдайларды дәл сипаттауды үйренесіз.",
+      "examples": [
+        "큰 (Кын): Үлкен.",
+        "작은 (Чагын): Кіші.",
+        "빠른 (Ппарын): Жылдам."
+      ]
+    },
+    {
+      "title": "19-Урок: Етістіктер",
+      "description": "Бұл сабақта сіз корей тіліндегі негізгі етістіктерді және олардың қолданылуын үйренесіз. Сіз әрекеттерді білдіруді, сұраныстар жасауды және қарапайым сөйлемдер құрастыруды үйренесіз.",
+      "examples": [
+        "하다 (Хада): Жасау.",
+        "가다 (Када): Бару.",
+        "먹다 (Мокта): Жеу."
+      ]
+    },
+    {
+      "title": "20-Урок: Практика",
+      "description": "Соңғы сабақта сіз өткен сабақтарда үйренген негізгі фразаларды практикалық тұрғыда қолданасыз. Бұл сіздің білімдеріңізді нығайтуға және корей тілінде күнделікті жағдайларда еркін сөйлесуге көмектеседі.",
+      "examples": [
+        "안녕하세요! 이름이 뭐에요? (Аннёнхасеё! Ирими мвоеё?): Сәлем! Атыңыз кім?",
+        "저는 [Аты]이에요. (Чонын [Аты] иеё): Мен [Аты] боламын.",
+        "어디 가요? (Оди каё?): Қайда барасыз?"
+      ]
+    }
+  ],
+  ky :[
+    {
+      "title": "1-Урок: Корей алфавити",
+      "description": "Бул сабакта сиз хангыль, башкача айтканда, корей жазуу системасын үйрөнөсүз. Сиз ар түрдүү тамгаларды, үнөмдүү жана үнсүз тамгаларды окуп жана жазып үйрөнөсүз.",
+      "examples": [
+        "ㅏ (а): Ата (아버지) сөзүндө.",
+        "ㅂ (б): Күрүч (밥) сөзүндө.",
+        "ㅎ (х): Асман (하늘) сөзүндө."
+      ]
+    },
+    {
+      "title": "2-Урок: Негизги амандашуулар",
+      "description": "Бул сабакта сиз корей тилиндеги көп колдонулган амандашууларды үйрөнөсүз. Сиз 'салам', 'күндүзү аман бол' жана башка күнүмдүк сүйлөшүүлөрдө колдонулуучу сөздөр менен тааныша аласыз.",
+      "examples": [
+        "안녕하세요 (Аннёнхасеё): Салам / Кош келиңиз.",
+        "좋은 아침입니다 (Чоон ачимимнида): Күндүзү аман бол.",
+        "안녕히 가세요 (Аннёнхи касеё): Саламат бол! (кечиккен адамга)"
+      ]
+    },
+    {
+      "title": "3-Урок: Өзүңүздү тааныштыруу",
+      "description": "Корей тилинде өзүңүздү кандай тааныштырганыңызды үйрөнөсүз. Сиз атыңызды, жашыңызды, улуттук маалыматтарыңызды жана башка жеке маалыматтарды айтканды үйрөнөсүз.",
+      "examples": [
+        "저는 [Атыңыз]입니다 (Чонын [Атыңыз] имнида): Мен [Атыңыз] болом.",
+        "저는 [Эл] 사람입니다 (Чонын [Эл] сарамимнида): Мен [Эл]тенмин.",
+        "나이는 [Жашы]살입니다 (Найнын [Жашы] сал имнида): Мен [Жашы] жаштамын."
+      ]
+    },
+    {
+      "title": "4-Урок: Сандар",
+      "description": "Бул сабакта сиз корей тилинде саноону үйрөнөсүз. Сиз корей жана кытай-корей сандарынын кандай колдонуларын, алар күндөрдү жана убакытты көрсөтүү үчүн кандай колдонулганын үйрөнөсүз.",
+      "examples": [
+        "하나 (Хана): Бир.",
+        "둘 (Дул): Эки.",
+        "셋 (Сет): Үч.",
+        "일 (Иль): Бир (кытай-корей системасында саноо үчүн)."
+      ]
+    },
+    {
+      "title": "5-Урок: Апта күндөрү жана айлар",
+      "description": "Бул сабакта сиз корей тилинде апта күндөрүн жана айларды кантип айтуу керектигин үйрөнөсүз. Андан тышкары, даталарды жана убакытты сурап, айтканды үйрөнөсүз.",
+      "examples": [
+        "월요일 (Уорёиль): Дүйшөмбү.",
+        "화요일 (Хваёиль): Шейшемби.",
+        "1월 (Иволь): Январь."
+      ]
+    },
+    {
+      "title": "6-Урок: Негизги сөздөр",
+      "description": "Бул сабакта сиз күнүмдүк сүйлөшүүлөрдө колдонулуучу маанилүү сөздөр менен тааныша аласыз. Сиз жардам сурап, ыраазылык билдирүү жана башка пайдалуу сөздөрдү үйрөнөсүз.",
+      "examples": [
+        "도와주세요 (Доаджусеё): Жардам кылыңызчы.",
+        "감사합니다 (Камсахамнида): Рахмат.",
+        "죄송합니다 (Джесонхамнида): Кечирип койуңуз."
+      ]
+    },
+    {
+      "title": "7-Урок: Сурак берүү",
+      "description": "Корей тилинде негизги суроолорду кантип берүү керектигин үйрөнөсүз. Сиз 'не', 'кана', 'кантип' жана 'не үчүн' сыяктуу суроо сөздөрү менен сүйлөшүүлөрдү уюштуруп үйрөнөсүз.",
+      "examples": [
+        "뭐예요? (Мвоеё?): Бул эмне?",
+        "어디에요? (Одиё?): Бул кайда?",
+        "왜요? (Ваеё?): Неге?"
+      ]
+    },
+    {
+      "title": "8-Урок: Тамак-аш лексикасы",
+      "description": "Бул сабакта сиз корей тилиндеги тамак-ашка байланыштуу сөздөрдү үйрөнөсүз. Сиз мейрамканада тамак заказ кылып, сүйүктүү тамактарыңыз жөнүндө сүйлөшүп жана башка тамак-аш сөздөрүн үйрөнөсүз.",
+      "examples": [
+        "밥 (Бап): Күрүч.",
+        "김치 (Кимчи): Кимчи (кычкылдалган жашылчалар).",
+        "고기 (Коги): Эт."
+      ]
+    },
+    {
+      "title": "9-Урок: Сатып алуу",
+      "description": "Бул сабакта сиз Кореяда сатып алуу үчүн керектүү негизги сөздөр менен тааныша аласыз. Сиз бааны сурап, өлчөмдөрдү билүү жана сатып алуу иштерин жүргүзүүнү үйрөнөсүз.",
+      "examples": [
+        "이거 얼마에요? (Иге ольмаеё?): Бул канча турат?",
+        "큰 사이즈 있어요? (Кын саиджу иссёё?): Ири өлчөм барбы?",
+        "이거 사고 싶어요 (Иге саго сипёё): Мен булду сатып алгым келет."
+      ]
+    },
+    {
+      "title": "10-Урок: Бағыттар",
+      "description": "Бул сабакта сиз корей тилинде багыттарды сурап жана көрсөтүп үйрөнөсүз. Мындан тышкары, метродо, дүкөндөрдө жана ресторандарда каякка баруу үчүн сөздөрдү үйрөнөсүз.",
+      "examples": [
+        "왼쪽 (Онджок): Солго.",
+        "오른쪽 (Орынджок): Оңго.",
+        "직진 (Чикджин): Түз."
+      ]
+    },
+    {
+      "title": "11-Урок: Транспорт",
+      "description": "Бул сабакта сиз Кореяда коомдук транспорт менен жүрүүгө зарыл болгон сөздөрдү үйрөнөсүз. Сиз такси сурап, автобустарга, метроорго барып жүрүүгө керек болгон сөздөрдү үйрөнөсүз.",
+      "examples": [
+        "버스 (Бос): Автобус.",
+        "지하철 (Чихачхоль): Метро.",
+        "택시 (Тэкси): Такси."
+      ]
+    },
+    {
+      "title": "12-Урок: Ауа-райы",
+      "description": "Бул сабакта сиз корей тилинде аба-ырайы тууралуу сүйлөшүүнү үйрөнөсүз. Сиз аба-ырайын сүрөттөп, күндүн мезгилин жана жылдын төрт мезгилин талкуулоону үйрөнөсүз.",
+      "examples": [
+        "날씨가 좋아요 (Нальссига чоаё): Аба-ырайы жакшы.",
+        "비가 와요 (Бига ваё): Жаңбыр жаайт.",
+        "덥다 (Допда): Ысык."
+      ]
+    },
+    {
+      "title": "13-Урок: Үй-бүлө",
+      "description": "Бул сабакта сиз үй-бүлө мүчөлөрүнүн аттарын жана сөздөрүн үйрөнөсүз. Сиз өз үй-бүлөңүз тууралуу сүйлөшүп, башка адамдардын үй-бүлөсүн сурай аласыз.",
+      "examples": [
+        "어머니 (Омони): Апам.",
+        "아버지 (Абоджи): Ата.",
+        "형 (Хён): Улуу агам (эркектер үчүн)."
+      ]
+    },
+    {
+      "title": "14-Урок: Жумуштар",
+      "description": "Бул сабакта сиз корей тилиндеги жумуштар менен байланышкан сөздөрдү үйрөнөсүз. Сиз жумушуңузду айтып, башка адамдардын жумушун сурай аласыз.",
+      "examples": [
+        "의사 (Уиса): Дарыгер.",
+        "선생님 (Сёнсэнним): Мұгалим.",
+        "직원 (Чигвон): Кызматкер."
+      ]
+    },
+    {
+      "title": "15-Урок: Хоббилар",
+      "description": "Бул сабакта сиз өз хоббилериңиз тууралуу корей тилинде сүйлөшүүнү үйрөнөсүз. Сиз сүйүктүү кызыгууларыңыз жана жактырган нерселер жөнүндө айта аласыз.",
+      "examples": [
+        "운동 (Ундон): Спорт.",
+        "영화 보기 (Ёнхва боги): Кино көрүү.",
+        "독서 (Доксо): Китеп окуу."
+      ]
+    },
+    {
+      "title": "16-Урок: Убакыт",
+      "description": "Бул сабакта сиз корей тилинде убакытты сурап жана айтканды үйрөнөсүз. Сиз күнүмдүк пландарды айтып, убакыт боюнча суроолорду жоопторду үйрөнөсүз.",
+      "examples": [
+        "지금 몇 시에요? (Чигым мёт сиэё?): Азыр канча?"
+      ]
+    }
+  ],
+  tr: [
+    {
+        "title": "Ders 1: Kore Alfabesi",
+        "description": "Bu derste, Kore yazı sistemi Hangul'ün temellerini öğreneceksiniz. Temel harfleri, ünlüleri ve ünsüzleri nasıl okuyup yazacağınızı anlayacaksınız.",
+        "examples": [
+            "ㅏ (a): 아버지 (baba) gibi.",
+            "ㅂ (b): 밥 (pirinç) gibi.",
+            "ㅎ (h): 하늘 (gökyüzü) gibi."
+        ]
+    },
+    {
+        "title": "Ders 2: Temel Selamlaşmalar",
+        "description": "Bu ders Korece'de yaygın selamlaşmaları öğretir. 'Merhaba', 'Günaydın', 'İyi akşamlar' ve günlük konuşmalarda kullanılan diğer temel selamlaşmaları öğrenirsiniz.",
+        "examples": [
+            "안녕하세요 (Annyeonghaseyo): Merhaba / İyi günler / İyi akşamlar.",
+            "좋은 아침입니다 (Joeun achimimnida): Günaydın.",
+            "안녕히 가세요 (Annyeonghi gaseyo): Hoşça kal! (Birisi ayrıldığında)"
+        ]
+    },
+    {
+        "title": "Ders 3: Kendini Tanıtma",
+        "description": "Kendini Korece tanıtmayı öğrenin. İsminizi, yaşınızı, milliyetinizi ve diğer kişisel bilgilerinizi nasıl söyleyeceğinizi öğrenirsiniz.",
+        "examples": [
+            "저는 [İsim]입니다 (Jeoneun [Name] imnida): Ben [İsim]im.",
+            "저는 [Ülke] 사람입니다 (Jeoneun [Country] saramimnida): Ben [Ülke]liyim.",
+            "나이는 [Yaş]살입니다 (Naineun [Age] sal imnida): Ben [Yaş] yaşındayım."
+        ]
+    },
+    {
+        "title": "Ders 4: Sayılar",
+        "description": "Bu derste Korece sayıları öğrenirsiniz. Hem yerel Kore sayıları hem de tarihler, saatler ve nesnelerin sayılması için kullanılan Sino-Korece sayıları öğreneceksiniz.",
+        "examples": [
+            "하나 (Hana): Bir.",
+            "둘 (Dul): İki.",
+            "셋 (Set): Üç.",
+            "일 (Il): Bir (Sino-Korece sayma sistemiyle)."
+        ]
+    },
+    {
+        "title": "Ders 5: Haftanın Günleri ve Aylar",
+        "description": "Bu derste haftanın günlerini ve yılın aylarını Korece nasıl söyleyeceğinizi öğreneceksiniz. Ayrıca tarihi sorma ve söyleme nasıl yapılır, onu da öğrenirsiniz.",
+        "examples": [
+            "월요일 (Woryoil): Pazartesi.",
+            "화요일 (Hwayoil): Salı.",
+            "1월 (Iwol): Ocak."
+        ]
+    },
+    {
+        "title": "Ders 6: Yaygın İfadeler",
+        "description": "Bu derste günlük konuşmalar için temel ifadeleri öğreneceksiniz. Yardım istemek, isteklerde bulunmak ve diğer yararlı ifadeleri öğrenirsiniz.",
+        "examples": [
+            "도와주세요 (Dowajuseyo): Lütfen yardım edin.",
+            "감사합니다 (Gamsahamnida): Teşekkür ederim.",
+            "죄송합니다 (Joesonghamnida): Özür dilerim."
+        ]
+    },
+    {
+        "title": "Ders 7: Soru Sorma",
+        "description": "Bu derste Korece temel soruları sormayı öğreneceksiniz. 'Ne', 'Nerede', 'Nasıl' ve 'Neden' gibi soru kelimelerini ve basit soruları nasıl oluşturacağınızı öğrenirsiniz.",
+        "examples": [
+            "뭐예요? (Mwoyeyo?): Ne bu?",
+            "어디에요? (Eodieyo?): Nerede?",
+            "왜요? (Waeyo?): Neden?"
+        ]
+    },
+    {
+        "title": "Ders 8: Yiyecek Kelimeleri",
+        "description": "Bu derste Korece yiyecek ile ilgili kelimeleri öğreneceksiniz. Bir restoranda yemek siparişi verebilecek, sevdiğiniz yemeklerden bahsedebileceksiniz.",
+        "examples": [
+            "밥 (Bap): Pilav.",
+            "김치 (Kimchi): Kimchi (fermente edilmiş sebzeler).",
+            "고기 (Gogi): Et."
+        ]
+    },
+    {
+        "title": "Ders 9: Alışveriş",
+        "description": "Bu derste Kore'de alışveriş yaparken kullanabileceğiniz temel ifadeleri öğreneceksiniz. Fiyatları, bedenleri sormayı ve alışveriş yapmayı öğreneceksiniz.",
+        "examples": [
+            "이거 얼마에요? (Igeo eolmaeyo?): Bu ne kadar?",
+            "큰 사이즈 있어요? (Keun saijeu isseoyo?): Büyük beden var mı?",
+            "이거 사고 싶어요 (Igeo sago sipeoyo): Bunu almak istiyorum."
+        ]
+    },
+    {
+        "title": "Ders 10: Yönler",
+        "description": "Bu derste Korece yön tariflerini nasıl soracağınızı ve vereceğinizi öğreneceksiniz. Ayrıca metro, mağaza ve restoranlar gibi yaygın yerlerde nasıl yol tarifi alacağınızı öğrenirsiniz.",
+        "examples": [
+            "왼쪽 (Oenjjok): Sol.",
+            "오른쪽 (Oreunjjok): Sağ.",
+            "직진 (Jikjin): Düz git."
+        ]
+    },
+    {
+        "title": "Ders 11: Ulaşım",
+        "description": "Bu derste Kore'de ulaşım araçlarıyla ilgili gerekli kelimeleri öğreneceksiniz. Kamu taşımacılığını nasıl kullanacağınızı, taksi isteyebileceksiniz.",
+        "examples": [
+            "버스 (Beoseu): Otobüs.",
+            "지하철 (Jihacheol): Metro.",
+            "택시 (Taeksi): Taksi."
+        ]
+    },
+    {
+        "title": "Ders 12: Hava Durumu",
+        "description": "Bu derste Korece hava durumu hakkında konuşmayı öğreneceksiniz. Hava durumunu tanımlayabilecek, hava tahminini sorabilecek ve mevsimler hakkında konuşabileceksiniz.",
+        "examples": [
+            "날씨가 좋아요 (Nalssiga joayo): Hava güzel.",
+            "비가 와요 (Bigawayo): Yağmur yağıyor.",
+            "덥다 (Deopda): Sıcak."
+        ]
+    },
+    {
+        "title": "Ders 13: Aile",
+        "description": "Bu derste Korece aile üyeleri ile ilgili kelimeleri öğreneceksiniz. Aileniz hakkında konuşabileceksiniz, aile üyelerinizi tanıtabileceksiniz.",
+        "examples": [
+            "어머니 (Eomeoni): Anne.",
+            "아버지 (Abeoji): Baba.",
+            "형 (Hyeong): Abi (erkekler için)."
+        ]
+    },
+    {
+        "title": "Ders 14: Meslekler",
+        "description": "Bu derste Korece yaygın meslekleri öğreneceksiniz. İş unvanlarını, başkalarının mesleklerini nasıl soracağınızı ve kendi mesleğinizi anlatmayı öğreneceksiniz.",
+        "examples": [
+            "의사 (Uisa): Doktor.",
+            "선생님 (Seonsaengnim): Öğretmen.",
+            "직원 (Jigwon): Çalışan."
+        ]
+    },
+    {
+        "title": "Ders 15: Hobiler",
+        "description": "Bu derste Korece hobileriniz hakkında nasıl konuşacağınızı öğreneceksiniz. İlgi alanlarınızı, sevdiğiniz ve sevmediğiniz şeyleri ifade etmeyi öğrenirsiniz.",
+        "examples": [
+            "운동 (Undong): Egzersiz.",
+            "영화 보기 (Yeonghwa bogi): Film izleme.",
+            "독서 (Dokseo): Kitap okuma."
+        ]
+    },
+    {
+        "title": "Ders 16: Zaman",
+        "description": "Bu derste Korece saat sorarak zaman öğrenmeyi ve günlük programınızı anlatmayı öğreneceksiniz.",
+        "examples": [
+            "지금 몇 시에요? (Jigeum myeot siyeyo?): Şu anda saat kaç?",
+            "3시 (3si): Saat 3.",
+            "오전 (Ojeon): AM."
+        ]
+    },
+    {
+        "title": "Ders 17: Yerler",
+        "description": "Bu derste Korece yaygın yerlerin isimlerini öğreneceksiniz. Ev, okul, ofis ve kamu yerleri hakkında konuşabileceksiniz.",
+        "examples": [
+            "집 (Jip): Ev.",
+            "학교 (Hakgyo): Okul.",
+            "병원 (Byeongwon): Hastane."
+        ]
+    },
+    {
+        "title": "Ders 18: Sıfatlar",
+        "description": "Bu derste Korece yaygın sıfatları öğreneceksiniz. Şeyleri, insanları ve durumları daha ayrıntılı anlatmak için sıfatları kullanmayı öğreneceksiniz.",
+        "examples": [
+            "큰 (Keun): Büyük.",
+            "작은 (Jageun): Küçük.",
+            "빠른 (Ppareun): Hızlı."
+        ]
+    },
+    {
+        "title": "Ders 19: Fiiller",
+        "description": "Bu derste Korece temel fiilleri öğreneceksiniz. Eylemleri ifade etmeyi, taleplerde bulunmayı ve basit cümleler kurmayı öğreneceksiniz.",
+        "examples": [
+            "하다 (Hada): Yapmak.",
+            "가다 (Gada): Gitmek.",
+            "먹다 (Meokda): Yemek."
+        ]
+    },
+    {
+        "title": "Ders 20: Pratik",
+        "description": "Son derste, Korece temel konuşmaları pratik yapacaksınız. Bu ders, önceki derslerde öğrendiklerinizi pekiştirmeye yardımcı olacak.",
+        "examples": [
+            "안녕하세요! 이름이 뭐에요? (Annyeonghaseyo! Ireumi mwoyeyo?): Merhaba! Adınız ne?",
+            "저는 [İsim]이에요. (Jeoneun [Name] ieyo): Ben [İsim]im.",
+            "어디 가요? (Eodi gayo?): Nereye gidiyorsunuz?"
+        ]
+    }
+],
+  bn: [
+    {
+        "title": "पाठ 1: कोरियाली वर्णमाला",
+        "description": "यस पाठमा, तपाईंले हंगुल, कोरियाली लेखन प्रणालीको आधारभूत कुरा सिक्नु हुनेछ। तपाईंले आधारभूत वर्ण, स्वर र व्यञ्जनहरू कसरी पढ्न र लेख्न सकिन्छ भनेर बुझ्नुभयो।",
+        "examples": [
+            "ㅏ (a): जस्तो कि 아버지 (बुबा)।",
+            "ㅂ (b): जस्तो कि 밥 (भात)।",
+            "ㅎ (h): जस्तो कि 하늘 (आसमान)।"
+        ]
+    },
+    {
+        "title": "पाठ 2: आधारभूत अभिवादनहरू",
+        "description": "यस पाठमा तपाईंलाई कोरियालीमा सामान्य अभिवादनहरू सिकाइन्छ। तपाईंले 'नमस्ते', 'शुभप्रभात', 'शुभ साँझ' र दैनिक वार्तालापमा प्रयोग हुने अन्य सामान्य अभिवादनहरू कसरी भन्न सकिन्छ भन्ने कुरा सिक्नु हुनेछ।",
+        "examples": [
+            "안녕하세요 (Annyeonghaseyo): नमस्ते / हैलो / शुभ अपराह्न।",
+            "좋은 아침입니다 (Joeun achimimnida): शुभप्रभात।",
+            "안녕히 가세요 (Annyeonghi gaseyo): बिदाइ! (जब कोही जान्छन्)"
+        ]
+    },
+    {
+        "title": "पाठ 3: आत्मपरिचय",
+        "description": "कोरियालीमा आफ्नो परिचय दिन सिक्नुहोस्। तपाईं आफ्नो नाम, उमेर, राष्ट्रियता र अन्य व्यक्तिगत विवरणहरू भन्न अभ्यास गर्नु हुनेछ।",
+        "examples": [
+            "저는 [Name]입니다 (Jeoneun [Name] imnida): म [नाम] हुँ।",
+            "저는 [Country] 사람입니다 (Jeoneun [Country] saramimnida): म [देश] बाट आएको हुँ।",
+            "나이는 [Age]살입니다 (Naineun [Age] sal imnida): म [उमेर] वर्षको हुँ।"
+        ]
+    },
+    {
+        "title": "पाठ 4: सङ्ख्याहरू",
+        "description": "यस पाठमा तपाईंलाई कोरियालीमा सङ्ख्या गन्न सिकाइन्छ। तपाईंले स्वदेशी कोरियाली सङ्ख्याहरू र चाइनो-कोरियाली सङ्ख्याहरू, जुन मिति, समय र वस्तुहरूको गन्तीका लागि प्रयोग गरिन्छ, सिक्नु हुनेछ।",
+        "examples": [
+            "하나 (Hana): एक।",
+            "둘 (Dul): दुई।",
+            "셋 (Set): तीन।",
+            "일 (Il): एक (चाइनो-कोरियाली प्रणालीमा गन्नका लागि)।"
+        ]
+    },
+    {
+        "title": "पाठ 5: हप्ता र महिना",
+        "description": "यस पाठमा तपाईंले कोरियालीमा हप्ताका दिन र वर्षका महिना कसरी भन्न सकिन्छ भन्ने कुरा सिक्नु हुनेछ। तपाईं मिति सोध्ने र बताउने तरिका पनि सिक्नु हुनेछ।",
+        "examples": [
+            "월요일 (Woryoil): सोमबार।",
+            "화요일 (Hwayoil): मंगलबार।",
+            "1월 (Iwol): जनवरी।"
+        ]
+    },
+    {
+        "title": "पाठ 6: सामान्य वाक्यांशहरू",
+        "description": "यस पाठमा तपाईंलाई दैनिक वार्तालापका लागि आवश्यक वाक्यांशहरू परिचित गराइन्छ। तपाईं मद्दत माग्ने, अनुरोध गर्ने र अन्य उपयोगी वाक्यांशहरू सिक्नु हुनेछ।",
+        "examples": [
+            "도와주세요 (Dowajuseyo): कृपया मद्दत गर्नुहोस्।",
+            "감사합니다 (Gamsahamnida): धन्यवाद।",
+            "죄송합니다 (Joesonghamnida): म माफी चाहन्छु।"
+        ]
+    },
+    {
+        "title": "पाठ 7: प्रश्न सोध्नु",
+        "description": "कोरियालीमा आधारभूत प्रश्नहरू सोध्न सिक्नुहोस्। तपाईंले 'के', 'कहाँ', 'कसरी' र 'किन' जस्ता प्रश्न शब्दहरू र साधारण प्रश्नहरू कसरी बनाउने भनेर सिक्नु हुनेछ।",
+        "examples": [
+            "뭐예요? (Mwoyeyo?): के हो?",
+            "어디에요? (Eodieyo?): कहाँ हो?",
+            "왜요? (Waeyo?): किन?"
+        ]
+    },
+    {
+        "title": "पाठ 8: खाद्य शब्दावली",
+        "description": "यस पाठमा तपाईंलाई कोरियालीमा खाद्यसँग सम्बन्धित शब्दावली सिकाइन्छ। तपाईं रेस्टुरेन्टमा खाना अर्डर गर्न, तपाईंको मनपर्ने खाना बारेमा कुरा गर्न र अन्य कुरा गर्न सक्षम हुनु हुनेछ।",
+        "examples": [
+            "밥 (Bap): भात।",
+            "김치 (Kimchi): किम्चि (फर्मेन्ट गरिएको तरकारी)।",
+            "고기 (Gogi): मांस।"
+        ]
+    },
+    {
+        "title": "पाठ 9: किनमेल",
+        "description": "यस पाठमा तपाईंलाई कोरियामा किनमेलका लागि आधारभूत वाक्यांशहरू सिकाइन्छ। तपाईं मूल्य, आकार सोध्न र किनमेल गर्ने तरिका सिक्नु हुनेछ।",
+        "examples": [
+            "이거 얼마에요? (Igeo eolmaeyo?): यो कति हो?",
+            "큰 사이즈 있어요? (Keun saijeu isseoyo?): के तपाईसँग ठूलो आकार छ?",
+            "이거 사고 싶어요 (Igeo sago sipeoyo): म यो किन्न चाहन्छु।"
+        ]
+    },
+    {
+        "title": "पाठ 10: दिशा निर्देशन",
+        "description": "यस पाठमा तपाईंलाई कोरियालीमा दिशा निर्देशन सोध्न र दिन सिकाइन्छ। तपाईं सामान्य स्थानहरू जस्तै मेट्रो, पसल र रेस्टुरेन्टहरूमा जानको लागि निर्देशन बुझ्न सक्नु हुनेछ।",
+        "examples": [
+            "왼쪽 (Oenjjok): बाँया।",
+            "오른쪽 (Oreunjjok): दाहिना।",
+            "직진 (Jikjin): सिधा अघि।"
+        ]
+    },
+    {
+        "title": "पाठ 11: यातायात",
+        "description": "कोरिया मा यातायात प्रयोग गर्नका लागि आवश्यक शब्दावली सिक्नुहोस्। यस पाठले तपाईंलाई सार्वजनिक यातायात प्रयोग गर्ने, सवारी माग्ने र अन्य चीजहरू बुझ्न मद्दत पुर्याउनेछ।",
+        "examples": [
+            "버스 (Beoseu): बस।",
+            "지하철 (Jihacheol): मेट्रो।",
+            "택시 (Taeksi): ट्याक्सी।"
+        ]
+    },
+    {
+        "title": "पाठ 12: मौसम",
+        "description": "यस पाठमा तपाईंलाई कोरियालीमा मौसमको बारेमा कुरा गर्न सिकाइन्छ। तपाईं मौसम वर्णन गर्न, मौसम पूरक सोध्न र ऋतुएँ बारेमा कुरा गर्न सक्षम हुनु हुनेछ।",
+        "examples": [
+            "날씨가 좋아요 (Nalssiga joayo): मौसम राम्रो छ।",
+            "비가 와요 (Bigawayo): वर्षा भइरहेको छ।",
+            "덥다 (Deopda): तातो छ।"
+        ]
+    },
+    {
+        "title": "पाठ 13: परिवार",
+        "description": "कोरियालीमा परिवारका सदस्यसँग सम्बन्धित शब्दावली सिक्नुहोस्। तपाईं आफ्नो परिवारका बारेमा कुरा गर्न, परिवारका सदस्यहरूलाई परिचय गराउन र अरूसँग उनीहरूको परिवार बारे सोध्न सक्षम हुनु हुनेछ।",
+        "examples": [
+            "어머니 (Eomeoni): आमा।",
+            "아버지 (Abeoji): बुबा।",
+            "형 (Hyeong): जेठो भाइ (पुरुषका लागि)।"
+        ]
+    },
+    {
+        "title": "पाठ 14: व्यवसाय",
+        "description": "यस पाठमा तपाईंलाई कोरियालीमा सामान्य व्यवसाय सिकाइन्छ। तपाईंलाई रोजगारका शीर्षकहरू, कसरी अरूको पेशा सोध्ने र आफ्नो कामको बारेमा वर्णन गर्ने बारेमा जान्न मद्दत पुग्नेछ।",
+        "examples": [
+            "의사 (Uisa): डाक्टर।",
+            "선생님 (Seonsaengnim): शिक्षक।",
+            "직원 (Jigwon): कर्मचारी।"
+        ]
+    },
+    {
+        "title": "पाठ 15: शौकहरू",
+        "description": "यस पाठमा तपाईंले आफ्नो शौकहरूको बारेमा कुरा गर्न सिक्नुहुनेछ। तपाईं आफ्नो चासो, मनपर्ने र नपर्ने कुरा व्यक्त गर्ने अभ्यास गर्नु हुनेछ।",
+        "examples": [
+            "운동 (Undong): व्यायाम।",
+            "영화 보기 (Yeonghwa bogi): चलचित्र हेर्नु।",
+            "독서 (Dokseo): पुस्तक पढ्नु।"
+        ]
+    },
+    {
+        "title": "पाठ 16: समय",
+        "description": "कोरियालीमा समय कसरि सोध्ने र बुझ्ने सिक्नुहोस्। तपाईं समय सम्बन्धी शब्दावली बुझ्न र आफ्नो दैनिक तालिका वर्णन गर्न अभ्यास गर्नु हुनेछ।",
+        "examples": [
+            "지금 몇 시에요? (Jigeum myeot siyeyo?): अहिले के कति बज्यो?",
+            "3시 (3si): 3 बजे।",
+            "오전 (Ojeon): बिहान।"
+        ]
+    },
+    {
+        "title": "पाठ 17: स्थानहरू",
+        "description": "यस पाठमा तपाईंलाई कोरियालीमा सामान्य स्थानहरूको शब्दावली सिकाइन्छ। तपाईं घर, विद्यालय, कार्यालय र सार्वजनिक स्थानहरूको बारेमा कुरा गर्न सक्षम हुनु हुनेछ।",
+        "examples": [
+            "집 (Jip): घर।",
+            "학교 (Hakgyo): विद्यालय।",
+            "병원 (Byeongwon): अस्पताल।"
+        ]
+    },
+    {
+        "title": "पाठ 18: विशेषणहरू",
+        "description": "कोरियालीमा सामान्य विशेषणहरू सिक्नुहोस्। तपाईं विशेषणहरू प्रयोग गरेर कुरा, मानिस र परिस्थितिहरूको विस्तृत वर्णन गर्न सक्षम हुनु हुनेछ।",
+        "examples": [
+            "큰 (Keun): ठूलो।",
+            "작은 (Jageun): सानो।",
+            "빠른 (Ppareun): छिटो।"
+        ]
+    },
+    {
+        "title": "पाठ 19: क्रियाहरू",
+        "description": "यस पाठमा तपाईंलाई आधारभूत क्रियाहरू र तिनीहरूको प्रयोग सिकाइन्छ। तपाईं कार्यहरू व्यक्त गर्ने, अनुरोध गर्ने र साधारण वाक्यहरू बनाउने सिक्नु हुनेछ।",
+        "examples": [
+            "하다 (Hada): गर्नु।",
+            "가다 (Gada): जानु।",
+            "먹다 (Meokda): खानु।"
+        ]
+    },
+    {
+        "title": "पाठ 20: अभ्यास",
+        "description": "अन्तिम पाठमा, तपाईंको कोरियालीमा आधारभूत वार्तालाप अभ्यास गर्नु हुनेछ। यस पाठले तपाईंलाई अघिल्ला पाठहरूमा सिकेका कुराहरू पुनःसमीक्षा गर्न मद्दत पुर्याउनेछ।",
+        "examples": [
+            "안녕하세요! 이름이 뭐에요? (Annyeonghaseyo! Ireumi mwoyeyo?): हैलो! तपाईंको नाम के हो?",
+            "저는 [Name]이에요. (Jeoneun [Name] ieyo): म [नाम] हुँ।",
+            "어디 가요? (Eodi gayo?): तपाईं कहाँ जानुहुन्छ?"
+        ]
+    }
+],
+ar: [
+    {
+        "title": "الدرس 1: الأبجدية الكورية",
+        "description": "في هذا الدرس، ستتعلم أساسيات نظام الكتابة الكورية هانغول. ستفهم كيف تقرأ وتكتب الحروف الأساسية، الحروف المتحركة، والحروف الساكنة.",
+        "examples": [
+            "ㅏ (a): كما في 아버지 (أب).",
+            "ㅂ (b): كما في 밥 (أرز).",
+            "ㅎ (h): كما في 하늘 (سماء)."
+        ]
+    },
+    {
+        "title": "الدرس 2: التحيات الأساسية",
+        "description": "يُعلمك هذا الدرس التحيات الشائعة باللغة الكورية. ستتعلم كيفية قول 'مرحبًا' و 'صباح الخير' و 'مساء الخير' وغيرها من التحيات الأساسية المستخدمة في المحادثات اليومية.",
+        "examples": [
+            "안녕하세요 (Annyeonghaseyo): مرحبًا / مساء الخير.",
+            "좋은 아침입니다 (Joeun achimimnida): صباح الخير.",
+            "안녕히 가세요 (Annyeonghi gaseyo): وداعًا! (عندما يغادر شخص ما)"
+        ]
+    },
+    {
+        "title": "الدرس 3: التعريف بالنفس",
+        "description": "تعلم كيفية التعريف بنفسك باللغة الكورية. ستتعلم كيفية قول اسمك، عمرك، جنسيتك، وغير ذلك من التفاصيل الشخصية.",
+        "examples": [
+            "저는 [اسم]입니다 (Jeoneun [Name] imnida): أنا [اسم].",
+            "저는 [دولة] 사람입니다 (Jeoneun [Country] saramimnida): أنا من [دولة].",
+            "나이는 [عمر]살입니다 (Naineun [Age] sal imnida): عمري [عمر] سنة."
+        ]
+    },
+    {
+        "title": "الدرس 4: الأرقام",
+        "description": "في هذا الدرس ستتعلم كيفية العد باللغة الكورية. ستتعلم الأرقام الكورية الأصلية والأرقام الصينية الكورية المستخدمة في التواريخ والأوقات وعد الأشياء.",
+        "examples": [
+            "하나 (Hana): واحد.",
+            "둘 (Dul): اثنان.",
+            "셋 (Set): ثلاثة.",
+            "일 (Il): واحد (يستخدم في النظام الصيني الكوري للعد)."
+        ]
+    },
+    {
+        "title": "الدرس 5: أيام الأسبوع والشهور",
+        "description": "في هذا الدرس ستتعلم كيفية قول أيام الأسبوع والشهور باللغة الكورية. كما ستتعلم كيفية سؤال وتحديد التاريخ.",
+        "examples": [
+            "월요일 (Woryoil): الإثنين.",
+            "화요일 (Hwayoil): الثلاثاء.",
+            "1월 (Iwol): يناير."
+        ]
+    },
+    {
+        "title": "الدرس 6: العبارات الشائعة",
+        "description": "هذا الدرس يقدم العبارات الأساسية للمحادثات اليومية. ستتعلم كيفية طلب المساعدة، تقديم الطلبات، وعبارات أخرى مفيدة.",
+        "examples": [
+            "도와주세요 (Dowajuseyo): من فضلك، ساعدني.",
+            "감사합니다 (Gamsahamnida): شكراً.",
+            "죄송합니다 (Joesonghamnida): أنا آسف."
+        ]
+    },
+    {
+        "title": "الدرس 7: طرح الأسئلة",
+        "description": "في هذا الدرس ستتعلم كيفية طرح الأسئلة الأساسية باللغة الكورية. ستتعلم كلمات السؤال مثل 'ماذا'، 'أين'، 'كيف'، و 'لماذا'، وكيفية تكوين أسئلة بسيطة.",
+        "examples": [
+            "뭐예요? (Mwoyeyo?): ما هذا؟",
+            "어디에요? (Eodieyo?): أين هو؟",
+            "왜요? (Waeyo?): لماذا؟"
+        ]
+    },
+    {
+        "title": "الدرس 8: مفردات الطعام",
+        "description": "في هذا الدرس ستتعلم مفردات الطعام باللغة الكورية. ستتمكن من طلب الطعام في المطاعم، التحدث عن أطعمتك المفضلة، وأكثر.",
+        "examples": [
+            "밥 (Bap): أرز.",
+            "김치 (Kimchi): كيمتشي (خضروات مخمرة).",
+            "고기 (Gogi): لحم."
+        ]
+    },
+    {
+        "title": "الدرس 9: التسوق",
+        "description": "في هذا الدرس ستتعلم العبارات الأساسية للتسوق في كوريا. ستتعلم كيفية السؤال عن الأسعار والأحجام، وكيفية إجراء عملية شراء.",
+        "examples": [
+            "이거 얼마에요? (Igeo eolmaeyo?): كم ثمن هذا؟",
+            "큰 사이즈 있어요? (Keun saijeu isseoyo?): هل لديك مقاس أكبر؟",
+            "이거 사고 싶어요 (Igeo sago sipeoyo): أريد شراء هذا."
+        ]
+    },
+    {
+        "title": "الدرس 10: الاتجاهات",
+        "description": "في هذا الدرس ستتعلم كيفية السؤال عن الاتجاهات وإعطائها باللغة الكورية. ستتعلم كيفية الإرشاد في الأماكن الشائعة مثل المترو، المتاجر، والمطاعم.",
+        "examples": [
+            "왼쪽 (Oenjjok): يسار.",
+            "오른쪽 (Oreunjjok): يمين.",
+            "직진 (Jikjin): مباشرة."
+        ]
+    },
+    {
+        "title": "الدرس 11: وسائل النقل",
+        "description": "تعلم المفردات الأساسية المتعلقة بالنقل في كوريا. ستتعلم كيفية استخدام وسائل النقل العام، وطلب سيارة أجرة.",
+        "examples": [
+            "버스 (Beoseu): حافلة.",
+            "지하철 (Jihacheol): مترو الأنفاق.",
+            "택시 (Taeksi): تاكسي."
+        ]
+    },
+    {
+        "title": "الدرس 12: الطقس",
+        "description": "في هذا الدرس ستتعلم كيفية التحدث عن الطقس باللغة الكورية. ستتمكن من وصف الطقس، سؤال عن التوقعات الجوية، والتحدث عن الفصول.",
+        "examples": [
+            "날씨가 좋아요 (Nalssiga joayo): الطقس جميل.",
+            "비가 와요 (Bigawayo): إنها تمطر.",
+            "덥다 (Deopda): الجو حار."
+        ]
+    },
+    {
+        "title": "الدرس 13: العائلة",
+        "description": "في هذا الدرس ستتعلم مفردات عن أفراد العائلة باللغة الكورية. ستتمكن من التحدث عن عائلتك، وتقديم أفراد عائلتك للآخرين.",
+        "examples": [
+            "어머니 (Eomeoni): أم.",
+            "아버지 (Abeoji): أب.",
+            "형 (Hyeong): أخ أكبر (للفتيان)."
+        ]
+    },
+    {
+        "title": "الدرس 14: الوظائف",
+        "description": "في هذا الدرس ستتعلم الوظائف الشائعة باللغة الكورية. ستتعلم الألقاب الوظيفية، كيفية سؤال الآخرين عن وظائفهم، وكيفية وصف وظيفتك الخاصة.",
+        "examples": [
+            "의사 (Uisa): طبيب.",
+            "선생님 (Seonsaengnim): معلم.",
+            "직원 (Jigwon): موظف."
+        ]
+    },
+    {
+        "title": "الدرس 15: الهوايات",
+        "description": "في هذا الدرس ستتعلم كيفية التحدث عن هواياتك باللغة الكورية. ستتعلم كيفية التعبير عن اهتماماتك، وما تحب وما لا تحب.",
+        "examples": [
+            "운동 (Undong): رياضة.",
+            "영화 보기 (Yeonghwa bogi): مشاهدة الأفلام.",
+            "독서 (Dokseo): قراءة الكتب."
+        ]
+    },
+    {
+        "title": "الدرس 16: الوقت",
+        "description": "تعلم كيفية معرفة الوقت باللغة الكورية. ستتعلم كيفية سؤال الوقت، فهم المفردات المتعلقة بالوقت، ووصف جدولك اليومي.",
+        "examples": [
+            "지금 몇 시에요? (Jigeum myeot siyeyo?): كم الساعة الآن؟",
+            "3시 (3si): الساعة 3.",
+            "오전 (Ojeon): صباحاً."
+        ]
+    },
+    {
+        "title": "الدرس 17: الأماكن",
+        "description": "في هذا الدرس ستتعلم كلمات الأماكن الشائعة باللغة الكورية. ستتمكن من التحدث عن أماكن مثل المنزل، المدرسة، المكتب، والأماكن العامة.",
+        "examples": [
+            "집 (Jip): منزل.",
+            "학교 (Hakgyo): مدرسة.",
+            "병원 (Byeongwon): مستشفى."
+        ]
+    },
+    {
+        "title": "الدرس 18: الصفات",
+        "description": "تعلم الصفات الشائعة باللغة الكورية. ستتمكن من وصف الأشياء، الأشخاص، والمواقف بتفاصيل أكثر باستخدام الصفات.",
+        "examples": [
+            "큰 (Keun): كبير.",
+            "작은 (Jageun): صغير.",
+            "빠른 (Ppareun): سريع."
+        ]
+    },
+    {
+        "title": "الدرس 19: الأفعال",
+        "description": "في هذا الدرس ستتعلم الأفعال الأساسية واستخداماتها باللغة الكورية. ستتعلم كيفية التعبير عن الأفعال، تقديم الطلبات، وتكوين جمل بسيطة.",
+        "examples": [
+            "하다 (Hada): يفعل.",
+            "가다 (Gada): يذهب.",
+            "먹다 (Meokda): يأكل."
+        ]
+    },
+    {
+        "title": "الدرس 20: التدريب",
+        "description": "في الدرس الأخير، ستتدرب على المحادثات الأساسية باللغة الكورية. سيساعدك هذا الدرس على تعزيز ما تعلمته في الدروس السابقة.",
+        "examples": [
+            "안녕하세요! 이름이 뭐에요? (Annyeonghaseyo! Ireumi mwoyeyo?): مرحبًا! ما اسمك؟",
+            "저는 [اسم]이에요. (Jeoneun [Name] ieyo): أنا [اسم].",
+            "어디 가요? (Eodi gayo?): إلى أين تذهب؟"
+        ]
+    }
+],
+ne: [
+    {
+        "title": "पाठ 1: कोरियन वर्णमाला",
+        "description": "यस पाठमा, तपाईं कोरियाली लेखन प्रणाली हंगुलका आधारहरू सिक्नुहुनेछ। तपाईं आधारभूत अक्षरहरू, स्वरहरू र व्यञ्जनहरू कसरी लेख्न र पढ्न सक्नुहुन्छ भनेर बुझ्नुहुनेछ।",
+        "examples": [
+            "ㅏ (a): जस्तो कि 아버지 (बुबा)।",
+            "ㅂ (b): जस्तो कि 밥 (चामल)।",
+            "ㅎ (h): जस्तो कि 하늘 (आकाश)।"
+        ]
+    },
+    {
+        "title": "पाठ 2: आधारभूत अभिवादन",
+        "description": "यस पाठमा तपाईं कोरियालीमा प्रचलित अभिवादन सिक्नुहुनेछ। तपाईं 'नमस्ते', 'शुभ प्रभात', 'शुभ सन्ध्या' र अन्य दैनिक अभिवादनहरू सिक्नुहुनेछ।",
+        "examples": [
+            "안녕하세요 (Annyeonghaseyo): नमस्ते / शुभ दिन / शुभ सन्ध्या।",
+            "좋은 아침입니다 (Joeun achimimnida): शुभ प्रभात।",
+            "안녕히 가세요 (Annyeonghi gaseyo): विदाई! (कोही जान लाग्दा)"
+        ]
+    },
+    {
+        "title": "पाठ 3: आफूलाई परिचय दिनु",
+        "description": "कोरियालीमा आफूलाई परिचय दिने तरिका सिक्नुहोस्। तपाईं आफ्नो नाम, उमेर, राष्ट्रियता र अन्य व्यक्तिगत जानकारीहरू कसरी भन्नुहुन्छ भनेर सिक्नुहुनेछ।",
+        "examples": [
+            "저는 [नाम]입니다 (Jeoneun [Name] imnida): म [नाम] हुँ।",
+            "저는 [देश] 사람입니다 (Jeoneun [Country] saramimnida): म [देश]को नागरिक हुँ।",
+            "나이는 [उमेर]살입니다 (Naineun [Age] sal imnida): मेरो उमेर [उमेर] वर्ष हो।"
+        ]
+    },
+    {
+        "title": "पाठ 4: अंकहरू",
+        "description": "यस पाठमा तपाईं कोरियाली अंकहरू सिक्नुहुनेछ। तपाईं स्थानीय कोरियाली अंकहरू र चिनियाँ कोरियाली अंकहरू जुन मिति, समय र वस्तुहरू गन्न प्रयोग हुन्छन्, सिक्नुहुनेछ।",
+        "examples": [
+            "하나 (Hana): एक।",
+            "둘 (Dul): दुई।",
+            "셋 (Set): तीन।",
+            "일 (Il): एक (चिनियाँ कोरियाली अंक प्रणालीमा)।"
+        ]
+    },
+    {
+        "title": "पाठ 5: हप्ताका दिन र महिना",
+        "description": "यस पाठमा तपाईं हप्ताका दिन र वर्षका महिना कोरियालीमा कसरी भन्नुहुन्छ भनेर सिक्नुहुनेछ। तपाईं मिति सोध्न र भन्नु पनि सिक्नुहुनेछ।",
+        "examples": [
+            "월요일 (Woryoil): सोमबार।",
+            "화요일 (Hwayoil): मंगलबार।",
+            "1월 (Iwol): जनवरी।"
+        ]
+    },
+    {
+        "title": "पाठ 6: सामान्य अभिव्यक्तिहरू",
+        "description": "यस पाठमा तपाईं दैनिक जीवनका लागि आधारभूत अभिव्यक्तिहरू सिक्नुहुनेछ। तपाईं मद्दत माग्ने, अनुरोध गर्ने र अन्य उपयोगी अभिव्यक्तिहरू सिक्नुहुनेछ।",
+        "examples": [
+            "도와주세요 (Dowajuseyo): कृपया मद्दत गर्नुहोस्।",
+            "감사합니다 (Gamsahamnida): धन्यवाद।",
+            "죄송합니다 (Joesonghamnida): म माफ पाउँछु।"
+        ]
+    },
+    {
+        "title": "पाठ 7: प्रश्न सोध्नु",
+        "description": "यस पाठमा तपाईं कोरियालीमा आधारभूत प्रश्न सोध्ने तरिका सिक्नुहुनेछ। तपाईं 'के' 'कहाँ' 'कसरी' र 'किन' जस्ता प्रश्न शब्दहरू र साधारण प्रश्नहरू कसरी बनाउने बुझ्नुहुनेछ।",
+        "examples": [
+            "뭐예요? (Mwoyeyo?): के हो यो?",
+            "어디에요? (Eodieyo?): कहाँ हो?",
+            "왜요? (Waeyo?): किन?"
+        ]
+    },
+    {
+        "title": "पाठ 8: खाना शब्दहरू",
+        "description": "यस पाठमा तपाईं कोरियालीमा खाना सम्बन्धी शब्दहरू सिक्नुहुनेछ। तपाईं रेस्टुरेन्टमा खाना अर्डर गर्न सक्नुहुनेछ, र तपाईंको मनपर्ने खाना बारेमा कुरा गर्न सक्नुहुनेछ।",
+        "examples": [
+            "밥 (Bap): चामल।",
+            "김치 (Kimchi): किम्ची (अम्लित सागपात)।",
+            "고기 (Gogi): मासु।"
+        ]
+    },
+    {
+        "title": "पाठ 9: किनमेल",
+        "description": "यस पाठमा तपाईं कोरियामा किनमेल गर्दा प्रयोग गर्न सकिने आधारभूत अभिव्यक्तिहरू सिक्नुहुनेछ। तपाईं मूल्य सोध्न, आकार सोध्न र किनमेल गर्न सिक्नुहुनेछ।",
+        "examples": [
+            "이거 얼마에요? (Igeo eolmaeyo?): यो कति हो?",
+            "큰 사이즈 있어요? (Keun saijeu isseoyo?): के तपाईंको ठूलो आकार छ?",
+            "이거 사고 싶어요 (Igeo sago sipeoyo): म यो किन्ने चाहन्छु।"
+        ]
+    },
+    {
+        "title": "पाठ 10: दिशा-निर्देश",
+        "description": "यस पाठमा तपाईं कोरियालीमा दिशा सोध्ने र दिने तरिका सिक्नुहुनेछ। तपाईं मेट्रो, पसल र रेस्टुरेन्ट जस्ता सामान्य स्थानहरूमा कसरी मार्गदर्शन प्राप्त गर्ने सिक्नुहुनेछ।",
+        "examples": [
+            "왼쪽 (Oenjjok): बायाँ।",
+            "오른쪽 (Oreunjjok): दायाँ।",
+            "직진 (Jikjin): सिधा जानु।"
+        ]
+    },
+    {
+        "title": "पाठ 11: यातायात",
+        "description": "यस पाठमा तपाईं कोरियामा यातायातका साधनहरूसँग सम्बन्धित आवश्यक शब्दहरू सिक्नुहुनेछ। तपाईं सार्वजनिक यातायात प्रयोग गर्ने, र ट्याक्सी माग्ने सिक्नुहुनेछ।",
+        "examples": [
+            "버스 (Beoseu): बस।",
+            "지하철 (Jihacheol): मेट्रो।",
+            "택시 (Taeksi): ट्याक्सी।"
+        ]
+    },
+    {
+        "title": "पाठ 12: मौसम",
+        "description": "यस पाठमा तपाईं कोरियालीमा मौसमको बारेमा कुरा गर्न सिक्नुहुनेछ। तपाईं मौसमको वर्णन गर्न, मौसम पूर्वानुमान सोध्न र ऋतुहरूको बारेमा कुरा गर्न सक्नुहुनेछ।",
+        "examples": [
+            "날씨가 좋아요 (Nalssiga joayo): मौसम राम्रो छ।",
+            "비가 와요 (Bigawayo): वर्षा भइरहेको छ।",
+            "덥다 (Deopda): गर्मी छ।"
+        ]
+    },
+    {
+        "title": "पाठ 13: परिवार",
+        "description": "यस पाठमा तपाईं कोरियालीमा परिवारका सदस्यहरूको बारेमा शब्दहरू सिक्नुहुनेछ। तपाईं आफ्नो परिवारको बारेमा कुरा गर्न सक्नुहुनेछ र तपाईंको परिवारका सदस्यहरूको परिचय दिन सक्नुहुनेछ।",
+        "examples": [
+            "어머니 (Eomeoni): आमा।",
+            "아버지 (Abeoji): बुवा।",
+            "형 (Hyeong): दाजु (पुरुषको लागि)।"
+        ]
+    },
+    {
+        "title": "पाठ 14: व्यवसायहरू",
+        "description": "यस पाठमा तपाईं कोरियालीमा प्रचलित व्यवसायहरू सिक्नुहुनेछ। तपाईं कार्य शीर्षकहरू, अरूसँग व्यवसायको बारेमा सोध्ने तरिका र आफ्नो व्यवसायको बारेमा कुरा गर्न सिक्नुहुनेछ।",
+        "examples": [
+            "의사 (Uisa): डाक्टर।",
+            "선생님 (Seonsaengnim): शिक्षक।",
+            "직원 (Jigwon): कर्मचारी।"
+        ]
+    },
+    {
+        "title": "पाठ 15: रुचिहरू",
+        "description": "यस पाठमा तपाईं कोरियालीमा आफ्ना रुचिहरूको बारेमा कसरी कुरा गर्ने सिक्नुहुनेछ। तपाईं आफ्ना चासोहरू, मनपर्ने र नमनपर्ने चिजहरूलाई व्यक्त गर्ने सिक्नुहुनेछ।",
+        "examples": [
+            "운동 (Undong): व्यायाम।",
+            "영화 보기 (Yeonghwa bogi): चलचित्र हेर्नु।",
+            "독서 (Dokseo): किताब पढ्नु।"
+        ]
+    },
+    {
+        "title": "पाठ 16: समय",
+        "description": "यस पाठमा तपाईं कोरियालीमा समय सोधेर समय जान्न र आफ्नो दैनिक तालिका वर्णन गर्ने तरिका सिक्नुहुनेछ।",
+        "examples": [
+            "지금 몇 시에요? (Jigeum myeot siyeyo?): अहिले कति बजेको छ?",
+            "3시 (3si): 3 बजेको छ।",
+            "오전 (Ojeon): बिहान।"
+        ]
+    },
+    {
+        "title": "पाठ 17: स्थानहरू",
+        "description": "यस पाठमा तपाईं कोरियालीमा स्थानसँग सम्बन्धित शब्दहरू सिक्नुहुनेछ। तपाईं घर, स्कूल, अफिस र सार्वजनिक स्थानहरूमा कसरी कुरा गर्ने भन्ने बुझ्नुहुनेछ।",
+        "examples": [
+            "집 (Jip): घर।",
+            "학교 (Hakgyo): विद्यालय।",
+            "병원 (Byeongwon): अस्पताल।"
+        ]
+    },
+    {
+        "title": "पाठ 18: विशेषणहरू",
+        "description": "यस पाठमा तपाईं कोरियालीमा विशेषणहरू सिक्नुहुनेछ। तपाईं वस्तुहरू, व्यक्तिहरू र घटनाहरूलाई विशेषणको माध्यमबाट थप विवरण दिन सक्नुहुनेछ।",
+        "examples": [
+            "큰 (Keun): ठूलो।",
+            "작은 (Jageun): सानो।",
+            "빠른 (Ppareun): छिटो।"
+        ]
+    },
+    {
+        "title": "पाठ 19: क्रियाहरू",
+        "description": "यस पाठमा तपाईं कोरियालीमा प्रचलित क्रियाहरू र तिनीहरूको प्रयोग सिक्नुहुनेछ। तपाईं क्रियाहरू व्यक्त गर्न, अनुरोध गर्न र साधारण वाक्यहरू बनाउन सिक्नुहुनेछ।",
+        "examples": [
+            "하다 (Hada): गर्नु।",
+            "가다 (Gada): जानु।",
+            "먹다 (Meokda): खानु।"
+        ]
+    },
+    {
+        "title": "पाठ 20: अभ्यास",
+        "description": "अन्तिम पाठमा, तपाईंले सिकेका आधारभूत वार्तालापहरू अभ्यास गर्नुहुनेछ। यस पाठले तपाईंलाई अघिल्लो पाठहरूमा सिकेका कुरा प्रगाढ बनाउन मद्दत पुर्याउनेछ।",
+        "examples": [
+            "안녕하세요! 이름이 뭐에요? (Annyeonghaseyo! Ireumi mwoyeyo?): नमस्ते! तपाईंको नाम के हो?",
+            "저는 [नाम]이에요. (Jeoneun [Name] ieyo): म [नाम] हुँ।",
+            "어디 가요? (Eodi gayo?): तपाईं कहाँ जानुहुन्छ?"
+        ]
+    }
+],
+vi: [
+    {
+        "title": "Bài 1: Bảng chữ cái Hàn Quốc",
+        "description": "Trong bài học này, bạn sẽ học các yếu tố cơ bản của hệ thống chữ viết Hàn Quốc Hangul. Bạn sẽ hiểu cách viết và đọc các ký tự cơ bản, nguyên âm và phụ âm.",
+        "examples": [
+            "ㅏ (a): Ví dụ như 아버지 (Bố).",
+            "ㅂ (b): Ví dụ như 밥 (Cơm).",
+            "ㅎ (h): Ví dụ như 하늘 (Trời)."
+        ]
+    },
+    {
+        "title": "Bài 2: Lời chào cơ bản",
+        "description": "Trong bài học này, bạn sẽ học các lời chào phổ biến trong tiếng Hàn. Bạn sẽ học cách nói 'Chào', 'Chào buổi sáng', 'Chào buổi tối' và các lời chào khác trong cuộc sống hàng ngày.",
+        "examples": [
+            "안녕하세요 (Annyeonghaseyo): Chào / Chào buổi sáng / Chào buổi tối.",
+            "좋은 아침입니다 (Joeun achimimnida): Chào buổi sáng.",
+            "안녕히 가세요 (Annyeonghi gaseyo): Tạm biệt! (Dành cho người ra đi)"
+        ]
+    },
+    {
+        "title": "Bài 3: Giới thiệu bản thân",
+        "description": "Học cách giới thiệu bản thân bằng tiếng Hàn. Bạn sẽ học cách nói tên, tuổi, quốc tịch và các thông tin cá nhân khác.",
+        "examples": [
+            "저는 [Tên]입니다 (Jeoneun [Name] imnida): Tôi là [Tên].",
+            "저는 [Quốc gia] 사람입니다 (Jeoneun [Country] saramimnida): Tôi là người [Quốc gia].",
+            "나이는 [Tuổi]살입니다 (Naineun [Age] sal imnida): Tôi [Tuổi] tuổi."
+        ]
+    },
+    {
+        "title": "Bài 4: Các con số",
+        "description": "Trong bài học này, bạn sẽ học các con số trong tiếng Hàn. Bạn sẽ học cả hệ thống số Hàn Quốc và hệ thống số Trung Quốc Hàn Quốc dùng để đếm thời gian, ngày tháng và các vật dụng.",
+        "examples": [
+            "하나 (Hana): Một.",
+            "둘 (Dul): Hai.",
+            "셋 (Set): Ba.",
+            "일 (Il): Một (Số Trung Quốc Hàn Quốc)."
+        ]
+    },
+    {
+        "title": "Bài 5: Các ngày trong tuần và tháng",
+        "description": "Trong bài học này, bạn sẽ học cách nói các ngày trong tuần và tháng trong tiếng Hàn. Bạn cũng sẽ học cách hỏi và nói về ngày tháng.",
+        "examples": [
+            "월요일 (Woryoil): Thứ Hai.",
+            "화요일 (Hwayoil): Thứ Ba.",
+            "1월 (Iwol): Tháng Một."
+        ]
+    },
+    {
+        "title": "Bài 6: Cụm từ thông dụng",
+        "description": "Trong bài học này, bạn sẽ học các cụm từ cơ bản trong cuộc sống hàng ngày. Bạn sẽ học cách yêu cầu giúp đỡ, đề nghị và các cụm từ hữu ích khác.",
+        "examples": [
+            "도와주세요 (Dowajuseyo): Xin vui lòng giúp đỡ.",
+            "감사합니다 (Gamsahamnida): Cảm ơn.",
+            "죄송합니다 (Joesonghamnida): Xin lỗi."
+        ]
+    },
+    {
+        "title": "Bài 7: Hỏi câu hỏi",
+        "description": "Trong bài học này, bạn sẽ học cách hỏi các câu hỏi cơ bản trong tiếng Hàn. Bạn sẽ hiểu các từ hỏi như 'cái gì', 'ở đâu', 'như thế nào' và 'tại sao'.",
+        "examples": [
+            "뭐예요? (Mwoyeyo?): Cái gì đây?",
+            "어디에요? (Eodieyo?): Ở đâu?",
+            "왜요? (Waeyo?): Tại sao?"
+        ]
+    },
+    {
+        "title": "Bài 8: Các từ vựng về thực phẩm",
+        "description": "Trong bài học này, bạn sẽ học các từ vựng về thực phẩm trong tiếng Hàn. Bạn sẽ học cách gọi món trong nhà hàng và nói về những món ăn yêu thích của bạn.",
+        "examples": [
+            "밥 (Bap): Cơm.",
+            "김치 (Kimchi): Kimchi (Món dưa cải lên men).",
+            "고기 (Gogi): Thịt."
+        ]
+    },
+    {
+        "title": "Bài 9: Mua sắm",
+        "description": "Trong bài học này, bạn sẽ học các cụm từ cơ bản khi đi mua sắm bằng tiếng Hàn. Bạn sẽ học cách hỏi giá cả, hỏi về kích cỡ và cách mua sắm.",
+        "examples": [
+            "이거 얼마에요? (Igeo eolmaeyo?): Cái này giá bao nhiêu?",
+            "큰 사이즈 있어요? (Keun saijeu isseoyo?): Có kích cỡ lớn không?",
+            "이거 사고 싶어요 (Igeo sago sipeoyo): Tôi muốn mua cái này."
+        ]
+    },
+    {
+        "title": "Bài 10: Hướng dẫn chỉ đường",
+        "description": "Trong bài học này, bạn sẽ học cách hỏi và đưa chỉ đường bằng tiếng Hàn. Bạn sẽ biết cách hỏi đường đến các địa điểm như ga tàu, cửa hàng và nhà hàng.",
+        "examples": [
+            "왼쪽 (Oenjjok): Bên trái.",
+            "오른쪽 (Oreunjjok): Bên phải.",
+            "직진 (Jikjin): Đi thẳng."
+        ]
+    },
+    {
+        "title": "Bài 11: Phương tiện giao thông",
+        "description": "Trong bài học này, bạn sẽ học các từ vựng về phương tiện giao thông cơ bản. Bạn sẽ học cách sử dụng phương tiện công cộng và gọi taxi.",
+        "examples": [
+            "버스 (Beoseu): Xe buýt.",
+            "지하철 (Jihacheol): Tàu điện ngầm.",
+            "택시 (Taeksi): Taxi."
+        ]
+    },
+    {
+        "title": "Bài 12: Thời tiết",
+        "description": "Trong bài học này, bạn sẽ học cách nói về thời tiết bằng tiếng Hàn. Bạn sẽ học cách mô tả thời tiết, hỏi dự báo và nói về các mùa trong năm.",
+        "examples": [
+            "날씨가 좋아요 (Nalssiga joayo): Thời tiết đẹp.",
+            "비가 와요 (Bigawayo): Trời đang mưa.",
+            "덥다 (Deopda): Trời nóng."
+        ]
+    },
+    {
+        "title": "Bài 13: Gia đình",
+        "description": "Trong bài học này, bạn sẽ học các từ vựng về các thành viên trong gia đình. Bạn sẽ học cách giới thiệu về gia đình và nói về các thành viên trong gia đình.",
+        "examples": [
+            "어머니 (Eomeoni): Mẹ.",
+            "아버지 (Abeoji): Bố.",
+            "형 (Hyeong): Anh trai (dành cho con trai)."
+        ]
+    },
+    {
+        "title": "Bài 14: Nghề nghiệp",
+        "description": "Trong bài học này, bạn sẽ học các nghề nghiệp phổ biến trong tiếng Hàn. Bạn sẽ học cách hỏi về nghề nghiệp và giới thiệu về nghề nghiệp của mình.",
+        "examples": [
+            "의사 (Uisa): Bác sĩ.",
+            "선생님 (Seonsaengnim): Giáo viên.",
+            "직원 (Jigwon): Nhân viên."
+        ]
+    },
+    {
+        "title": "Bài 15: Sở thích",
+        "description": "Trong bài học này, bạn sẽ học cách nói về sở thích của mình bằng tiếng Hàn. Bạn sẽ học cách nói về những gì mình thích và không thích.",
+        "examples": [
+            "운동 (Undong): Thể dục.",
+            "영화 보기 (Yeonghwa bogi): Xem phim.",
+            "독서 (Dokseo): Đọc sách."
+        ]
+    },
+    {
+        "title": "Bài 16: Thời gian",
+        "description": "Trong bài học này, bạn sẽ học cách hỏi giờ và nói về thời gian trong tiếng Hàn. Bạn sẽ học cách mô tả lịch trình hàng ngày của mình.",
+        "examples": [
+            "지금 몇 시에요? (Jigeum myeot siyeyo?): Bây giờ là mấy giờ?",
+            "3시 (3si): 3 giờ.",
+            "오전 (Ojeon): Buổi sáng."
+        ]
+    },
+    {
+        "title": "Bài 17: Địa điểm",
+        "description": "Trong bài học này, bạn sẽ học các từ vựng về các địa điểm trong tiếng Hàn. Bạn sẽ học cách nói về nhà, trường học, công ty và các địa điểm công cộng khác.",
+        "examples": [
+            "집 (Jip): Nhà.",
+            "학교 (Hakgyo): Trường học.",
+            "병원 (Byeongwon): Bệnh viện."
+        ]
+    },
+    {
+        "title": "Bài 18: Tính từ",
+        "description": "Trong bài học này, bạn sẽ học cách sử dụng các tính từ trong tiếng Hàn. Bạn sẽ học cách mô tả các vật thể, con người và sự kiện.",
+        "examples": [
+            "큰 (Keun): Lớn.",
+            "작은 (Jageun): Nhỏ.",
+            "빠른 (Ppareun): Nhanh."
+        ]
+    },
+    {
+        "title": "Bài 19: Động từ",
+        "description": "Trong bài học này, bạn sẽ học các động từ phổ biến trong tiếng Hàn. Bạn sẽ học cách sử dụng động từ để diễn đạt hành động và yêu cầu.",
+        "examples": [
+            "하다 (Hada): Làm.",
+            "가다 (Gada): Đi.",
+            "먹다 (Meokda): Ăn."
+        ]
+    },
+    {
+        "title": "Bài 20: Ôn tập",
+        "description": "Bài học cuối cùng, bạn sẽ thực hành các cuộc hội thoại cơ bản mà bạn đã học. Bài học này sẽ giúp bạn củng cố những gì đã học và cải thiện kỹ năng giao tiếp.",
+        "examples": [
+            "안녕하세요! 이름이 뭐에요? (Annyeonghaseyo! Ireumi mwoyeyo?): Chào bạn! Tên bạn là gì?",
+            "저는 [Tên]이에요. (Jeoneun [Name] ieyo): Tôi là [Tên].",
+            "어디 가요? (Eodi gayo?): Bạn đi đâu?"
+        ]
+    }
+],
+th: [
+    {
+        "title": "บทที่ 1: อักษรเกาหลี",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้เกี่ยวกับพื้นฐานของระบบการเขียนภาษาเกาหลี ฮันกุล (Hangul) คุณจะเข้าใจวิธีการเขียนและอ่านอักษรพื้นฐาน รวมทั้งสระและพยัญชนะต่างๆ",
+        "examples": [
+            "ㅏ (a): ตัวอย่างเช่น 아버지 (บิดา).",
+            "ㅂ (b): ตัวอย่างเช่น 밥 (ข้าว).",
+            "ㅎ (h): ตัวอย่างเช่น 하늘 (ท้องฟ้า)."
+        ]
+    },
+    {
+        "title": "บทที่ 2: คำทักทายพื้นฐาน",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้คำทักทายที่ใช้บ่อยในภาษาเกาหลี คุณจะเรียนรู้วิธีการพูด 'สวัสดี', 'สวัสดีตอนเช้า', 'สวัสดีตอนเย็น' และคำทักทายอื่นๆ ในชีวิตประจำวัน",
+        "examples": [
+            "안녕하세요 (Annyeonghaseyo): สวัสดี / สวัสดีตอนเช้า / สวัสดีตอนเย็น.",
+            "좋은 아침입니다 (Joeun achimimnida): สวัสดีตอนเช้า.",
+            "안녕히 가세요 (Annyeonghi gaseyo): ลาก่อน! (สำหรับคนที่กำลังจะไป)"
+        ]
+    },
+    {
+        "title": "บทที่ 3: การแนะนำตัวเอง",
+        "description": "เรียนรู้วิธีการแนะนำตัวเองในภาษาเกาหลี คุณจะได้เรียนรู้วิธีพูดชื่อ อายุ สัญชาติ และข้อมูลส่วนตัวอื่นๆ",
+        "examples": [
+            "저는 [ชื่อ]입니다 (Jeoneun [Name] imnida): ฉันคือ [ชื่อ].",
+            "저는 [ประเทศ] 사람입니다 (Jeoneun [Country] saramimnida): ฉันเป็นคน [ประเทศ].",
+            "나이는 [อายุ]살입니다 (Naineun [Age] sal imnida): ฉันอายุ [อายุ] ปี."
+        ]
+    },
+    {
+        "title": "บทที่ 4: ตัวเลข",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้เกี่ยวกับตัวเลขในภาษาเกาหลี คุณจะได้เรียนรู้ทั้งระบบตัวเลขเกาหลีและตัวเลขจีนที่ใช้ในการบอกเวลา วันที่ และการนับสิ่งต่างๆ",
+        "examples": [
+            "하나 (Hana): หนึ่ง.",
+            "둘 (Dul): สอง.",
+            "셋 (Set): สาม.",
+            "일 (Il): หนึ่ง (ตัวเลขจีนเกาหลี)."
+        ]
+    },
+    {
+        "title": "บทที่ 5: วันในสัปดาห์และเดือน",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้วิธีพูดถึงวันในสัปดาห์และเดือนในภาษาเกาหลี คุณจะได้เรียนรู้วิธีถามและบอกวันเดือนปี",
+        "examples": [
+            "월요일 (Woryoil): วันจันทร์.",
+            "화요일 (Hwayoil): วันอังคาร.",
+            "1월 (Iwol): เดือนมกราคม."
+        ]
+    },
+    {
+        "title": "บทที่ 6: วลีที่ใช้บ่อย",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้วลีพื้นฐานที่ใช้ในชีวิตประจำวัน คุณจะเรียนรู้วิธีขอความช่วยเหลือ การขอร้อง และวลีที่เป็นประโยชน์อื่นๆ",
+        "examples": [
+            "도와주세요 (Dowajuseyo): กรุณาช่วยเหลือ.",
+            "감사합니다 (Gamsahamnida): ขอบคุณ.",
+            "죄송합니다 (Joesonghamnida): ขอโทษ."
+        ]
+    },
+    {
+        "title": "บทที่ 7: การถามคำถาม",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้วิธีถามคำถามพื้นฐานในภาษาเกาหลี คุณจะเข้าใจคำถามต่างๆ เช่น 'อะไร', 'ที่ไหน', 'อย่างไร' และ 'ทำไม'",
+        "examples": [
+            "뭐예요? (Mwoyeyo?): อะไรคะ?",
+            "어디에요? (Eodieyo?): ที่ไหนคะ?",
+            "왜요? (Waeyo?): ทำไมคะ?"
+        ]
+    },
+    {
+        "title": "บทที่ 8: คำศัพท์เกี่ยวกับอาหาร",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้คำศัพท์เกี่ยวกับอาหารในภาษาเกาหลี คุณจะได้เรียนรู้วิธีสั่งอาหารในร้านอาหารและพูดถึงอาหารที่คุณชื่นชอบ",
+        "examples": [
+            "밥 (Bap): ข้าว.",
+            "김치 (Kimchi): คิมชิ (ผักดองเกาหลี).",
+            "고기 (Gogi): เนื้อสัตว์."
+        ]
+    },
+    {
+        "title": "บทที่ 9: การช็อปปิ้ง",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้คำศัพท์พื้นฐานที่ใช้เมื่อไปช็อปปิ้งในภาษาเกาหลี คุณจะเรียนรู้วิธีถามราคา วิธีถามเกี่ยวกับขนาด และวิธีการซื้อสินค้า",
+        "examples": [
+            "이거 얼마에요? (Igeo eolmaeyo?): อันนี้ราคาเท่าไรคะ?",
+            "큰 사이즈 있어요? (Keun saijeu isseoyo?): มีขนาดใหญ่ไหม?",
+            "이거 사고 싶어요 (Igeo sago sipeoyo): ฉันอยากซื้ออันนี้."
+        ]
+    },
+    {
+        "title": "บทที่ 10: การขอทาง",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้วิธีขอทางและให้ทิศทางในภาษาเกาหลี คุณจะรู้วิธีถามทางไปยังสถานที่ต่างๆ เช่น สถานีรถไฟ ร้านค้า และร้านอาหาร",
+        "examples": [
+            "왼쪽 (Oenjjok): ซ้าย.",
+            "오른쪽 (Oreunjjok): ขวา.",
+            "직진 (Jikjin): ตรงไป."
+        ]
+    },
+    {
+        "title": "บทที่ 11: ยานพาหนะ",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้คำศัพท์เกี่ยวกับยานพาหนะในภาษาเกาหลี คุณจะได้เรียนรู้วิธีใช้ระบบขนส่งสาธารณะและเรียกแท็กซี่",
+        "examples": [
+            "버스 (Beoseu): รถบัส.",
+            "지하철 (Jihacheol): รถไฟใต้ดิน.",
+            "택시 (Taeksi): แท็กซี่."
+        ]
+    },
+    {
+        "title": "บทที่ 12: อากาศ",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้วิธีพูดเกี่ยวกับอากาศในภาษาเกาหลี คุณจะได้เรียนรู้วิธีอธิบายสภาพอากาศ ถามพยากรณ์อากาศ และพูดถึงฤดูกาลต่างๆ",
+        "examples": [
+            "날씨가 좋아요 (Nalssiga joayo): อากาศดี.",
+            "비가 와요 (Bigawayo): ฝนตก.",
+            "덥다 (Deopda): ร้อน."
+        ]
+    },
+    {
+        "title": "บทที่ 13: ครอบครัว",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้คำศัพท์เกี่ยวกับสมาชิกในครอบครัว คุณจะได้เรียนรู้วิธีแนะนำเกี่ยวกับครอบครัวและพูดถึงสมาชิกในครอบครัว",
+        "examples": [
+            "어머니 (Eomeoni): แม่.",
+            "아버지 (Abeoji): พ่อ.",
+            "형 (Hyeong): พี่ชาย (สำหรับชาย)."
+        ]
+    },
+    {
+        "title": "บทที่ 14: อาชีพ",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้เกี่ยวกับอาชีพที่ใช้บ่อยในภาษาเกาหลี คุณจะได้เรียนรู้วิธีถามเกี่ยวกับอาชีพและแนะนำอาชีพของตัวเอง",
+        "examples": [
+            "의사 (Uisa): หมอ.",
+            "선생님 (Seonsaengnim): ครู.",
+            "직원 (Jigwon): พนักงาน."
+        ]
+    },
+    {
+        "title": "บทที่ 15: งานอดิเรก",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้วิธีพูดเกี่ยวกับงานอดิเรกของคุณในภาษาเกาหลี คุณจะได้เรียนรู้วิธีบอกสิ่งที่คุณชอบและไม่ชอบ",
+        "examples": [
+            "운동 (Undong): การออกกำลังกาย.",
+            "영화 보기 (Yeonghwa bogi): การดูหนัง.",
+            "독서 (Dokseo): การอ่านหนังสือ."
+        ]
+    },
+    {
+        "title": "บทที่ 16: เวลา",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้วิธีถามเวลาและพูดถึงเวลาต่างๆ ในภาษาเกาหลี คุณจะได้เรียนรู้วิธีอธิบายกำหนดการประจำวันของคุณ",
+        "examples": [
+            "지금 몇 시에요? (Jigeum myeot siyeyo?): ตอนนี้กี่โมงคะ?",
+            "3시 (3si): 3 โมง.",
+            "오전 (Ojeon): ช่วงเช้า."
+        ]
+    },
+    {
+        "title": "บทที่ 17: สถานที่",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้คำศัพท์เกี่ยวกับสถานที่ต่างๆ ในภาษาเกาหลี คุณจะได้เรียนรู้วิธีพูดถึงบ้าน โรงเรียน บริษัท และสถานที่สาธารณะอื่นๆ",
+        "examples": [
+            "집 (Jip): บ้าน.",
+            "학교 (Hakgyo): โรงเรียน.",
+            "병원 (Byeongwon): โรงพยาบาล."
+        ]
+    },
+    {
+        "title": "บทที่ 18: คุณลักษณะ",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้วิธีการใช้คำคุณลักษณะในภาษาเกาหลี คุณจะได้เรียนรู้วิธีอธิบายวัตถุ บุคคล และเหตุการณ์ต่างๆ",
+        "examples": [
+            "큰 (Keun): ใหญ่.",
+            "작은 (Jageun): เล็ก.",
+            "빠른 (Ppareun): เร็ว."
+        ]
+    },
+    {
+        "title": "บทที่ 19: กริยา",
+        "description": "ในบทเรียนนี้คุณจะได้เรียนรู้กริยาที่ใช้บ่อยในภาษาเกาหลี คุณจะได้เรียนรู้วิธีใช้กริยาหลายๆ ตัวเพื่อบรรยายการกระทำและการขอร้องต่างๆ",
+        "examples": [
+            "하다 (Hada): ทำ.",
+            "가다 (Gada): ไป.",
+            "먹다 (Meokda): กิน."
+        ]
+    },
+    {
+        "title": "บทที่ 20: การทบทวน",
+        "description": "ในบทเรียนสุดท้ายคุณจะได้ฝึกพูดและการสนทนาเบื้องต้นที่ได้เรียนรู้ไปแล้ว บทเรียนนี้จะช่วยให้คุณทบทวนสิ่งที่ได้เรียนและพัฒนาทักษะการสื่อสารของคุณ",
+        "examples": [
+            "안녕하세요! 이름이 뭐에요? (Annyeonghaseyo! Ireumi mwoyeyo?): สวัสดีค่ะ! คุณชื่ออะไรคะ?",
+            "저는 [ชื่อ]이에요. (Jeoneun [Name] ieyo): ฉันชื่อ [ชื่อ].",
+            "어디 가요? (Eodi gayo?): คุณไปที่ไหนคะ?"
+        ]
+    }
+],
+si: [
+    {
+        "title": "පාඩම 1: කොරියානු අකුරු",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු ලිවීමේ පද්ධතිය වන හංගුල් (Hangul) මූලිකව ඉගෙන ගන්නා අතර, අකුරු, ස්වර සහ පඬිංචන කියවීමට සහ ලිවීමට කෙසේදැයි පැහැදිලිව උගන්නාවා.",
+        "examples": [
+            "ㅏ (a): 아버지 (අබා) වැනි.",
+            "ㅂ (b): 밥 (අර්ථය) වැනි.",
+            "ㅎ (h): 하늘 (හනූල්) වැනි."
+        ]
+    },
+    {
+        "title": "පාඩම 2: මූලික සාක්කි",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු භාෂාවෙන් මූලික සාක්කි වාක්‍ය ඉගෙන ගනී. 'ආයුබෝවන්', 'ආයුබෝවන් උදේ', 'ආයුබෝවන් සවස' සහ වෙනත් සාමාන්‍ය සාක්කි පද්ධති.",
+        "examples": [
+            "안녕하세요 (Annyeonghaseyo): ආයුබෝවන් / උදේ ආයුබෝවන් / සවස ආයුබෝවන්.",
+            "좋은 아침입니다 (Joeun achimimnida): උදේ ආයුබෝවන්.",
+            "안녕히 가세요 (Annyeonghi gaseyo): අයුබෝවන්! (කෙනෙක් පිටවෙද්දී)"
+        ]
+    },
+    {
+        "title": "පාඩම 3: මගේ නම හඳුන්වාදීම",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු භාෂාවෙන් තමන්ගේ නම, වයස, ජාතිකත්වය සහ වෙනත් පෞද්ගලික තොරතුරු හඳුන්වා දීමට කෙසේදැයි ඉගෙන ගනී.",
+        "examples": [
+            "저는 [නම]입니다 (Jeoneun [Name] imnida): මට [නම]යි.",
+            "저는 [දේශය] 사람입니다 (Jeoneun [Country] saramimnida): මම [දේශය] කෙනෙකි.",
+            "나이는 [වයස]살입니다 (Naineun [Age] sal imnida): මගේ වයස [වයස]යි."
+        ]
+    },
+    {
+        "title": "පාඩම 4: අංක",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු අංක හඳුන්වා දීමේ ක්‍රම, අංක භාවිතය සහ සිනෝ-කොරියානු සංඛ්‍යා පද්ධතිය පිළිබඳව ඉගෙන ගනී.",
+        "examples": [
+            "하나 (Hana): එක.",
+            "둘 (Dul): දෙක.",
+            "셋 (Set): තුන.",
+            "일 (Il): එක (සිනෝ-කොරියානු සංඛ්‍යා පද්ධතිය)."
+        ]
+    },
+    {
+        "title": "පාඩම 5: සතිය සහ මාස",
+        "description": "මෙම පාඩම තුළ ඔබ සතියේ දින සහ මාස නම් කොරියානු භාෂාවෙන් හැඳින්වීම ඉගෙන ගනී.",
+        "examples": [
+            "월요일 (Woryoil): සඳුදා.",
+            "화요일 (Hwayoil): අඟහරුවාදා.",
+            "1월 (Iwol): ජනවාරි."
+        ]
+    },
+    {
+        "title": "පාඩම 6: සාමාන්‍ය වාක්‍ය",
+        "description": "මෙම පාඩම තුළ ඔබ මනෝයන භාෂාවෙන් අය, සෙරී සහ අධික වාක්‍ය පිළිබඳව ඉගෙන ගනී.",
+        "examples": [
+            "도와주세요 (Dowajuseyo): කරුණාකර උදව් කරන්න.",
+            "감사합니다 (Gamsahamnida): ස්තූතියි.",
+            "죄송합니다 (Joesonghamnida): සමාවන්න."
+        ]
+    },
+    {
+        "title": "පාඩම 7: ප්‍රශ්න",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු භාෂාවෙන් ප්‍රශ්න වාක්‍යක් සකස් කරයි. 'මෙය කුමක්ද?', 'කොහේද?', 'ඇයි?' වැනි ප්‍රශ්න සකස් කරන ක්‍රම.",
+        "examples": [
+            "뭐예요? (Mwoyeyo?): මෙය කුමක්ද?",
+            "어디에요? (Eodieyo?): කොහේද?",
+            "왜요? (Waeyo?): ඇයි?"
+        ]
+    },
+    {
+        "title": "පාඩම 8: ආහාර කථා",
+        "description": "මෙම පාඩම තුළ ඔබ ආහාර නිෂ්පාදන පිළිබඳව වාක්‍ය කතා කරන හැටි සහ රෙස්ටෝරන් අය සහ ආහාර කතා කරන අය කියවයි.",
+        "examples": [
+            "밥 (Bap): පෝෂක.",
+            "김치 (Kimchi): කුමුල්.",
+            "고기 (Gogi): මාංශ."
+        ]
+    },
+    {
+        "title": "පාඩම 9: අලවිකිරීම",
+        "description": "මෙම පාඩම තුළ ඔබ අලවිකිරීම සඳහා පාරිභෝගික වාක්‍ය සහ අලවිකිරීමෙන් මූලික ප්‍රශ්න හා අත්පොත් බලන්න.",
+        "examples": [
+            "이거 얼마에요? (Igeo eolmaeyo?): මෙය කුමක්ද?",
+            "큰 사이즈 있어요? (Keun saijeu isseoyo?): මහා ප්‍රමාණයක් තිබේද?",
+            "이거 사고 싶어요 (Igeo sago sipeoyo): මට මෙය මිලදී ගැනීමට අවශ්‍යයි."
+        ]
+    },
+    {
+        "title": "පාඩම 10: මාර්ගය",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු භාෂාවෙන් මාර්ගය සහ directions පිළිබඳව කථා කරන බව ඉගෙන ගනී.",
+        "examples": [
+            "왼쪽 (Oenjjok): වම්.",
+            "오른쪽 (Oreunjjok): දකුණ.",
+            "직진 (Jikjin): සෘජු මාර්ගය."
+        ]
+    },
+    {
+        "title": "පාඩම 11: ගමන",
+        "description": "මෙම පාඩම තුළ ඔබ ගමන පිළිබඳව පවා ගමනක් සෙරී වාක්‍ය කරන්න.",
+        "examples": [
+            "버스 (Beoseu): බස්.",
+            "지하철 (Jihacheol): මට්ටම් රථ.",
+            "택시 (Taeksi): ටැක්සි."
+        ]
+    },
+    {
+        "title": "පාඩම 12: කාලගුණය",
+        "description": "මෙම පාඩම තුළ ඔබ කාලගුණය පිළිබඳව කොරියානු භාෂාවෙන් කථා කරන අය. කාලගුණය කවදාවත් කතා කරන ක්‍රම.",
+        "examples": [
+            "날씨가 좋아요 (Nalssiga joayo): කාලගුණය හොඳයි.",
+            "비가 와요 (Bigawayo): වැසි වැටෙයි.",
+            "덥다 (Deopda): උණුසුම්."
+        ]
+    },
+    {
+        "title": "පාඩම 13: පවුල",
+        "description": "මෙම පාඩම තුළ ඔබ පවුලේ සාමාජිකයන් පිළිබඳව කොරියානු භාෂාවෙන් කථා කරන.",
+        "examples": [
+            "어머니 (Eomeoni): මව.",
+            "아버지 (Abeoji): පියා.",
+            "형 (Hyeong): අය (පිරිමි)."
+        ]
+    },
+    {
+        "title": "පාඩම 14: වෘත්තීන්",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු භාෂාවේ අයවිය වන වෘත්තීන් පිළිබඳව ඉගෙන ගනී. ඔබට වෘත්තීන් පිළිබඳ ප්‍රශ්න කිරීම සහ තම වෘත්තිය හඳුන්වාදීම පිළිබඳව ඉගෙන ගනී.",
+        "examples": [
+            "의사 (Uisa): වෛද්‍යවරු.",
+            "선생님 (Seonsaengnim): ගුරු.",
+            "직원 (Jigwon): සේවක."
+        ]
+    },
+    {
+        "title": "පාඩම 15: ප්‍රිය රැකියාව",
+        "description": "මෙම පාඩම තුළ ඔබේ ආදරණීය ගමනක් පිළිබඳව කොරියානු භාෂාවෙන් කථා කරන ක්‍රම ඉගෙන ගනී. ඔබට ඔබට පතුරා ඇති කුමක් හෝ කුමක් නොවීමට සම්පූර්ණ අයවනයෙන් උගන්නයි.",
+        "examples": [
+            "운동 (Undong): ව්‍යායාම.",
+            "영화 보기 (Yeonghwa bogi): සිනමා බලන්න.",
+            "독서 (Dokseo): පොත් කියවීම."
+        ]
+    },
+    {
+        "title": "පාඩම 16: කාලය",
+        "description": "මෙම පාඩම තුළ ඔබ කාලය ප්‍රශ්න කිරීම සහ කොරියානු භාෂාවෙන් වරක් හෝ කාල පිළිබඳව කථා කරන ක්‍රම ඉගෙන ගනී.",
+        "examples": [
+            "지금 몇 시에요? (Jigeum myeot siyeyo?): දැන් කීයයි?",
+            "3시 (3si): 3 මිනිත්තු.",
+            "오전 (Ojeon): පෙරවරු."
+        ]
+    },
+    {
+        "title": "පාඩම 17: ස්ථාන",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු භාෂාවෙන් වෙනස් ස්ථාන පිළිබඳව කථා කරන ක්‍රම ඉගෙන ගනී. ගෙදර, පාසල, කාර්යාලය සහ වෙනත් පොදු ස්ථාන පිළිබඳව කථා කරන්න.",
+        "examples": [
+            "집 (Jip): ගෙදර.",
+            "학교 (Hakgyo): පාසල.",
+            "병원 (Byeongwon): රෝහල."
+        ]
+    },
+    {
+        "title": "පාඩම 18: ගුණාංග",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු භාෂාවේ ගුණාංග භාවිතා කරමින් වස්තු, පුද්ගලයන් සහ සිදුවීම් වර්ණනා කිරීමට ඉගෙන ගනී.",
+        "examples": [
+            "큰 (Keun): විශාල.",
+            "작은 (Jageun): කුඩා.",
+            "빠른 (Ppareun): වේගවත්."
+        ]
+    },
+    {
+        "title": "පාඩම 19: ක්‍රියා",
+        "description": "මෙම පාඩම තුළ ඔබ කොරියානු භාෂාවේ බොහෝ භාවිතා වන ක්‍රියා පද ඉගෙන ගනී. ක්‍රියා පද භාවිතා කරමින් ක්‍රියා සහ ඉල්ලීම් කරන්න.",
+        "examples": [
+            "하다 (Hada): කිරීම.",
+            "가다 (Gada): ගොස් යාම.",
+            "먹다 (Meokda): කෑම."
+        ]
+    },
+    {
+        "title": "පාඩම 20: සමාලෝචනය",
+        "description": "අවසාන පාඩම වන මෙම පාඩම තුළ ඔබ ඉගෙන ගත් මූලික කථා හා සාකච්ඡා ව්‍යායාම කරන්න. මෙම පාඩම ඔබට අයේන හා කථා කිරීමේ හැකියාව දියුණු කිරීමට උදව් කරනවා.",
+        "examples": [
+            "안녕하세요! 이름이 뭐에요? (Annyeonghaseyo! Ireumi mwoyeyo?): හෙලෝ! ඔබේ නම කුමක්ද?",
+            "저는 [නම]이에요. (Jeoneun [Name] ieyo): මට [නම]යි.",
+            "어디 가요? (Eodi gayo?): ඔබ කොහේ යනවා?"
+        ]
+    }
+
+]
+
+
+};
+
+function generateLessonContent(language) {
+    const lessonContainer = document.getElementById('lesson-container');
+    lessonContainer.innerHTML = '';  // Clear previous content
+
+    lessons[language].forEach(lesson => {
+        const lessonDiv = document.createElement('div');
+        lessonDiv.classList.add('lesson');
+        lessonDiv.innerHTML = `
+            <h2>${lesson.title}</h2>
+            <p>${lesson.description}</p>
+            <h3>Examples:</h3>
+            <ul>
+                ${lesson.examples.map(example => `<li>${example}</li>`).join('')}
+            </ul>
+        `;
+        lessonContainer.appendChild(lessonDiv);
+    });
+}
+
+function changeLanguage() {
+    const language = document.getElementById('language-select').value;
+    generateLessonContent(language);
+}
+
+// Initialize the site with English
+window.onload = () => generateLessonContent('en');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korean Lessons Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #6200ea;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .language-switcher {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    .language-switcher select {
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    .quiz-question {
+      margin: 15px 0;
+    }
+
+    .quiz-options button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px 20px;
+      background: #6200ea;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .quiz-options button:hover {
+      background: #3700b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #6200ea;
+      color: white;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="header-title">Korean Lessons Quiz</h1>
+    <p id="header-subtitle">Test your knowledge!</p>
+  </header>
+
+  <div class="container">
+    <div class="language-switcher">
+      <label for="language" id="language-label">Choose Language:</label>
+      <select id="language" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="ru">Russian</option>
+        <option value="uz">Uzbek</option>
+        <option value="tr">Turkish</option>
+        <option value="ar">Arabic</option>
+        <option value="vi">Vietnamese</option>
+        <option value="si">Sinhala</option>
+        <option value="kk">Kazakh</option>
+        <option value="bn">Bengali</option>
+        <option value="ne">Nepali</option>
+        <option value="ky">Kyrgyz</option>
+        <option value="th">Thai</option>
+      </select>
+    </div>
+
+    <div id="quiz">
+      <div class="quiz-question">
+        <h2 id="question"></h2>
+      </div>
+      <div class="quiz-options" id="options"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Korean Lessons Quiz</p>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        headerTitle: "Korean Lessons Quiz",
+        headerSubtitle: "Test your knowledge!",
+        languageLabel: "Choose Language:",
+        questions: [
+          { question: "What is the Korean word for 'rice'?", options: ["밥", "김치", "고기"], correct: 0 },
+          { question: "How do you say 'hello' in Korean?", options: ["안녕하세요", "감사합니다", "죄송합니다"], correct: 0 },
+          { question: "What does '하늘' mean?", options: ["Sky", "Rice", "Meat"], correct: 0 },
+          { question: "Translate '좋은 아침입니다'.", options: ["Good morning", "Good night", "Hello"], correct: 0 },
+          { question: "What is 'Monday' in Korean?", options: ["월요일", "화요일", "수요일"], correct: 0 },
+          { question: "What does '하다' mean?", options: ["To do", "To eat", "To go"], correct: 0 },
+          { question: "How do you say 'thank you'?", options: ["감사합니다", "안녕하세요", "미안합니다"], correct: 0 },
+          { question: "What is '1월'?", options: ["January", "March", "May"], correct: 0 },
+          { question: "Translate '왼쪽'.", options: ["Left", "Right", "Straight"], correct: 0 },
+          { question: "What is the Korean word for 'doctor'?", options: ["의사", "선생님", "학생"], correct: 0 },
+        ]
+      },
+      ru: {
+    "headerTitle": "Викторина по корейскому языку",
+    "headerSubtitle": "Проверьте свои знания!",
+    "languageLabel": "Выберите язык:",
+    "questions": [
+      { "question": "Как по-корейски 'рис'?", "options": ["밥", "김치", "고기"], "correct": 0 },
+      { "question": "Как сказать 'здравствуйте' на корейском?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+      { "question": "Что значит '하늘'?", "options": ["Небо", "Рис", "Мясо"], "correct": 0 },
+      { "question": "Переведите '좋은 아침입니다'.", "options": ["Доброе утро", "Доброй ночи", "Здравствуйте"], "correct": 0 },
+      { "question": "Как будет 'понедельник' по-корейски?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+      { "question": "Что значит '하다'?", "options": ["Делать", "Есть", "Идти"], "correct": 0 },
+      { "question": "Как сказать 'спасибо' на корейском?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+      { "question": "Как будет 'январь' по-корейски?", "options": ["1월", "3월", "5월"], "correct": 0 },
+      { "question": "Переведите '왼쪽'.", "options": ["Лево", "Право", "Прямо"], "correct": 0 },
+      { "question": "Как будет 'доктор' по-корейски?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+    ]
+  },
+  uz: {
+    "headerTitle": "Koreys tili testi",
+    "headerSubtitle": "Bilimlaringizni sinab ko'ring!",
+    "languageLabel": "Tilni tanlang:",
+    "questions": [
+      { "question": "'Guruch' koreys tilida qanday bo'ladi?", "options": ["밥", "김치", "고기"], "correct": 0 },
+      { "question": "'Salom' koreys tilida qanday aytiladi?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+      { "question": "'하늘' nimani anglatadi?", "options": ["Osmon", "Guruch", "Go'sht"], "correct": 0 },
+      { "question": "'좋은 아침입니다' tarjima qiling.", "options": ["Hayrli tong", "Hayrli tun", "Salom"], "correct": 0 },
+      { "question": "'Dushanba' koreys tilida qanday bo'ladi?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+      { "question": "'하다' nimani anglatadi?", "options": ["Qilmoq", "Yemoq", "Bormoq"], "correct": 0 },
+      { "question": "'Rahmat' koreys tilida qanday aytiladi?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+      { "question": "'1월' nimani anglatadi?", "options": ["Yanvar", "Mart", "May"], "correct": 0 },
+      { "question": "'왼쪽' tarjima qiling.", "options": ["Chap", "O'ng", "To'g'ri"], "correct": 0 },
+      { "question": "'Shifokor' koreys tilida qanday bo'ladi?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+    ]
+  },
+  tr: {
+    "headerTitle": "Korece Ders Testi",
+    "headerSubtitle": "Bilgilerinizi test edin!",
+    "languageLabel": "Dil Seçin:",
+    "questions": [
+      { "question": "'Pirinç' Korece nasıl söylenir?", "options": ["밥", "김치", "고기"], "correct": 0 },
+      { "question": "'Merhaba' Korece nasıl söylenir?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+      { "question": "'하늘' ne anlama gelir?", "options": ["Gökyüzü", "Pirinç", "Et"], "correct": 0 },
+      { "question": "'좋은 아침입니다' çevirin.", "options": ["Günaydın", "İyi geceler", "Merhaba"], "correct": 0 },
+      { "question": "'Pazartesi' Korece nasıl söylenir?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+      { "question": "'하다' ne anlama gelir?", "options": ["Yapmak", "Yemek", "Gitmek"], "correct": 0 },
+      { "question": "'Teşekkür ederim' Korece nasıl söylenir?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+      { "question": "'1월' ne anlama gelir?", "options": ["Ocak", "Mart", "Mayıs"], "correct": 0 },
+      { "question": "'왼쪽' çevirin.", "options": ["Sol", "Sağ", "Düz"], "correct": 0 },
+      { "question": "'Doktor' Korece nasıl söylenir?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+    ]
+  },
+  kk: {
+  "headerTitle": "Корей тілі тесті",
+  "headerSubtitle": "Білімдеріңізді сынап көріңіз!",
+  "languageLabel": "Тілді таңдаңыз:",
+  "questions": [
+    { "question": "'Гүрүч' корей тілінде қалай айтылады?", "options": ["밥", "김치", "고기"], "correct": 0 },
+    { "question": "'Сәлем' корей тілінде қалай айтылады?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+    { "question": "'하늘' не мағына береді?", "options": ["Аспан", "Гүрүч", "Ет"], "correct": 0 },
+    { "question": "'좋은 아침입니다' аударыңыз.", "options": ["Қайырлы таң", "Қайырлы түн", "Сәлем"], "correct": 0 },
+    { "question": "'Дүйсенбі' корей тілінде қалай айтылады?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+    { "question": "'하다' не мағына береді?", "options": ["Істеу", "Жеу", "Бару"], "correct": 0 },
+    { "question": "'Рахмет' корей тілінде қалай айтылады?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+    { "question": "'1월' не мағына береді?", "options": ["Қаңтар", "Наурыз", "Мамыр"], "correct": 0 },
+    { "question": "'왼쪽' аударыңыз.", "options": ["Сол", "Оң", "Түзу"], "correct": 0 },
+    { "question": "'Дәрігер' корей тілінде қалай айтылады?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+  ]
+},
+ky: {
+  "headerTitle": "Корей тили тести",
+  "headerSubtitle": "Билимдериңизди сыноодон өткөрүңүз!",
+  "languageLabel": "Тилди тандаңыз:",
+  "questions": [
+    { "question": "'Гүрүч' корей тилинде кандай болот?", "options": ["밥", "김치", "고기"], "correct": 0 },
+    { "question": "'Салам' корей тилинде кандай айтылат?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+    { "question": "'하늘' эмне мааниси бар?", "options": ["Аспан", "Гүрүч", "Эт"], "correct": 0 },
+    { "question": "'좋은 아침입니다' которуңуз.", "options": ["Кайырлуу таң", "Кайырлуу түн", "Салам"], "correct": 0 },
+    { "question": "'Дүйшөмбү' корей тилинде кандай болот?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+    { "question": "'하다' эмне мааниси бар?", "options": ["Жасоо", "Жеш", "Баруу"], "correct": 0 },
+    { "question": "'Рахмат' корей тилинде кандай айтылат?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+    { "question": "'1월' эмне мааниси бар?", "options": ["Жыган", "Март", "Мамыр"], "correct": 0 },
+    { "question": "'왼쪽' которуңуз.", "options": ["Сол", "Оң", "Түз"], "correct": 0 },
+    { "question": "'Дарыгер' корей тилинде кандай болот?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+  ]
+},
+ne: {
+  "headerTitle": "कोरियन भाषा परीक्षा",
+  "headerSubtitle": "आफ्नो ज्ञान परिक्षण गर्नुहोस्!",
+  "languageLabel": "भाषा चयन गर्नुहोस्:",
+  "questions": [
+    { "question": "'गुरुच' कोरियन भाषामा के हो?", "options": ["밥", "김치", "고기"], "correct": 0 },
+    { "question": "'नमस्ते' कोरियन भाषामा कसरी भनिन्छ?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+    { "question": "'하늘' को अर्थ के हो?", "options": ["आसमान", "गुरुच", "मासु"], "correct": 0 },
+    { "question": "'좋은 아침입니다' अनुवाद गर्नुहोस्.", "options": ["शुभ प्रभात", "शुभ रात्रि", "नमस्ते"], "correct": 0 },
+    { "question": "'सोमबार' कोरियन भाषामा के हो?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+    { "question": "'하다' को अर्थ के हो?", "options": ["गर्नु", "खानु", "जानु"], "correct": 0 },
+    { "question": "'धन्यवाद' कोरियन भाषामा कसरी भनिन्छ?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+    { "question": "'1월' को अर्थ के हो?", "options": ["जनवरी", "मार्च", "मे"], "correct": 0 },
+    { "question": "'왼쪽' अनुवाद गर्नुहोस्.", "options": ["बायाँ", "दायाँ", "सही"], "correct": 0 },
+    { "question": "'डॉक्टर' कोरियन भाषामा के हो?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+  ]
+},
+vi:{
+  "headerTitle": "Bài kiểm tra tiếng Hàn",
+  "headerSubtitle": "Hãy kiểm tra kiến thức của bạn!",
+  "languageLabel": "Chọn ngôn ngữ:",
+  "questions": [
+    { "question": "'Gạo' trong tiếng Hàn là gì?", "options": ["밥", "김치", "고기"], "correct": 0 },
+    { "question": "'Xin chào' trong tiếng Hàn là gì?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+    { "question": "'하늘' có nghĩa là gì?", "options": ["Bầu trời", "Gạo", "Thịt"], "correct": 0 },
+    { "question": "'좋은 아침입니다' dịch là gì?", "options": ["Chào buổi sáng", "Chúc ngủ ngon", "Xin chào"], "correct": 0 },
+    { "question": "'Thứ hai' trong tiếng Hàn là gì?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+    { "question": "'하다' có nghĩa là gì?", "options": ["Làm", "Ăn", "Đi"], "correct": 0 },
+    { "question": "'Cảm ơn' trong tiếng Hàn là gì?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+    { "question": "'1월' có nghĩa là gì?", "options": ["Tháng một", "Tháng ba", "Tháng năm"], "correct": 0 },
+    { "question": "'왼쪽' dịch là gì?", "options": ["Trái", "Phải", "Đúng"], "correct": 0 },
+    { "question": "'Bác sĩ' trong tiếng Hàn là gì?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+  ]
+},
+si: {
+  "headerTitle": "කොරියන් භාෂා පරීක්ෂණය",
+  "headerSubtitle": "ඔබේ දැනුම පරීක්ෂා කරන්න!",
+  "languageLabel": "භාෂාව තෝරන්න:",
+  "questions": [
+    { "question": "'අක්කා' කොරියන් භාෂාවෙන් කුමක්ද?", "options": ["밥", "김치", "고기"], "correct": 0 },
+    { "question": "'ආයුබෝවන්' කොරියන් භාෂාවෙන් කුමක්ද?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+    { "question": "'하늘' කොහොමද කියනවා?", "options": ["අහස", "අක්කා", " මස්"], "correct": 0 },
+    { "question": "'좋은 아침입니다' පරිවර්තනය කරන්න.", "options": ["සුභ උදෑසන", "සුභ රාත්‍රී", "ආයුබෝවන්"], "correct": 0 },
+    { "question": "'සෝමවාරය' කොරියන් භාෂාවෙන් කුමක්ද?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+    { "question": "'하다' කියන්නේ කුමක්ද?", "options": ["කිරීමට", "ඉන්න", "යාම"], "correct": 0 },
+    { "question": "'ස්තුතියි' කොරියන් භාෂාවෙන් කුමක්ද?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+    { "question": "'1월' කියන්නේ කුමක්ද?", "options": ["ජනවාරි", "මාර්තු", "මැයි"], "correct": 0 },
+    { "question": "'왼쪽' පරිවර්තනය කරන්න.", "options": ["වම", "දකුණු", "සිට"], "correct": 0 },
+    { "question": "'චිකිත්සකයා' කොරියන් භාෂාවෙන් කුමක්ද?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+  ]
+},
+bn :{
+  "headerTitle": "কোরিয়ান ভাষা পরীক্ষা",
+  "headerSubtitle": "আপনার জ্ঞান পরীক্ষা করুন!",
+  "languageLabel": "ভাষা নির্বাচন করুন:",
+  "questions": [
+    { "question": "'গুড়ুচ' কোরিয়ান ভাষায় কী হয়?", "options": ["밥", "김치", "고기"], "correct": 0 },
+    { "question": "'নমস্তে' কোরিয়ান ভাষায় কীভাবে বলা হয়?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+    { "question": "'하늘' মানে কী?", "options": ["আকাশ", "গুড়ুচ", "মাংস"], "correct": 0 },
+    { "question": "'좋은 아침입니다' অনুবাদ করুন।", "options": ["সুপ্রভাত", "শুভরাত্রি", "নমস্তে"], "correct": 0 },
+    { "question": "'সোমবার' কোরিয়ান ভাষায় কী হয়?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+    { "question": "'하다' মানে কী?", "options": ["করা", "খাওয়া", "যাওয়া"], "correct": 0 },
+    { "question": "'ধন্যবাদ' কোরিয়ান ভাষায় কীভাবে বলা হয়?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+    { "question": "'1월' মানে কী?", "options": ["জানুয়ারী", "মার্চ", "মে"], "correct": 0 },
+    { "question": "'왼쪽' অনুবাদ করুন।", "options": ["বাম", "ডান", "সঠিক"], "correct": 0 },
+    { "question": "'ডাক্তার' কোরিয়ান ভাষায় কী হয়?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+  ]
+},
+ar: {
+  "headerTitle": "اختبار اللغة الكورية",
+  "headerSubtitle": "اختبر معرفتك!",
+  "languageLabel": "اختر اللغة:",
+  "questions": [
+    { "question": "'الأرز' باللغة الكورية ماذا يُقال؟", "options": ["밥", "김치", "고기"], "correct": 0 },
+    { "question": "'مرحباً' باللغة الكورية ماذا يُقال؟", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+    { "question": "'하늘' ماذا يعني؟", "options": ["السماء", "الأرز", "اللحم"], "correct": 0 },
+    { "question": "'좋은 아침입니다' ترجمه", "options": ["صباح الخير", "تصبح على خير", "مرحباً"], "correct": 0 },
+    { "question": "'الإثنين' باللغة الكورية ماذا يُقال؟", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+    { "question": "'하다' ماذا يعني؟", "options": ["افعل", "كل", "اذهب"], "correct": 0 },
+    { "question": "'شكراً' باللغة الكورية ماذا يُقال؟", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+    { "question": "'1월' ماذا يعني؟", "options": ["يناير", "مارس", "مايو"], "correct": 0 },
+    { "question": "'왼쪽' ترجمه", "options": ["يسار", "يمين", "صحيح"], "correct": 0 },
+    { "question": "'طبيب' باللغة الكورية ماذا يُقال؟", "options": ["의사", "선생님", "학생"], "correct": 0 }
+  ]
+},
+th: {
+  "headerTitle": "การทดสอบภาษาเกาหลี",
+  "headerSubtitle": "ทดสอบความรู้ของคุณ!",
+  "languageLabel": "เลือกภาษา:",
+  "questions": [
+    { "question": "'ข้าว' ภาษาเกาหลีคืออะไร?", "options": ["밥", "김치", "고기"], "correct": 0 },
+    { "question": "'สวัสดี' ภาษาเกาหลีคืออะไร?", "options": ["안녕하세요", "감사합니다", "죄송합니다"], "correct": 0 },
+    { "question": "'하늘' หมายถึงอะไร?", "options": ["ท้องฟ้า", "ข้าว", "เนื้อ"], "correct": 0 },
+    { "question": "'좋은 아침입니다' แปลว่าอะไร?", "options": ["สวัสดีตอนเช้า", "ราตรีสวัสดิ์", "สวัสดี"], "correct": 0 },
+    { "question": "'วันจันทร์' ภาษาเกาหลีคืออะไร?", "options": ["월요일", "화요일", "수요일"], "correct": 0 },
+    { "question": "'하다' หมายถึงอะไร?", "options": ["ทำ", "กิน", "ไป"], "correct": 0 },
+    { "question": "'ขอบคุณ' ภาษาเกาหลีคืออะไร?", "options": ["감사합니다", "안녕하세요", "미안합니다"], "correct": 0 },
+    { "question": "'1월' หมายถึงอะไร?", "options": ["มกราคม", "มีนาคม", "พฤษภาคม"], "correct": 0 },
+    { "question": "'왼쪽' แปลว่าอะไร?", "options": ["ซ้าย", "ขวา", "ถูกต้อง"], "correct": 0 },
+    { "question": "'หมอ' ภาษาเกาหลีคืออะไร?", "options": ["의사", "선생님", "학생"], "correct": 0 }
+  ]
+}
+
+
+      // Add other languages here...
+    };
+
+    let currentLanguage = "en";
+
+    function changeLanguage() {
+      currentLanguage = document.getElementById("language").value;
+      updateContent();
+    }
+
+    function updateContent() {
+      const langData = translations[currentLanguage];
+      document.getElementById("header-title").innerText = langData.headerTitle;
+      document.getElementById("header-subtitle").innerText = langData.headerSubtitle;
+      document.getElementById("language-label").innerText = langData.languageLabel;
+
+      const quiz = document.getElementById("quiz");
+      quiz.innerHTML = "";
+
+      langData.questions.forEach((q, index) => {
+        const questionDiv = document.createElement("div");
+        questionDiv.className = "quiz-question";
+        questionDiv.innerHTML = `<h2>${q.question}</h2>`;
+
+        const optionsDiv = document.createElement("div");
+        optionsDiv.className = "quiz-options";
+
+        q.options.forEach((option, idx) => {
+          const button = document.createElement("button");
+          button.innerText = option;
+          button.onclick = () => {
+            alert(idx === q.correct ? "Correct!" : "Wrong!");
+          };
+          optionsDiv.appendChild(button);
+        });
+
+        quiz.appendChild(questionDiv);
+        quiz.appendChild(optionsDiv);
+      });
+    }
+
+    updateContent();
+  </script>
+</body>
+</html>
